@@ -1,4 +1,4 @@
-import os
+import os, time
 import requests, sys
 from dotenv import load_dotenv
 
@@ -10,7 +10,7 @@ emoji_map: dict = {
 }
 
 # text styling
-BOLD: str = '\033[1m'; END: str = '\033[0m'; YELLOW: str = '\033[33m'
+BOLD: str = '\033[1m'; END: str = '\033[0m'; YELLOW: str = '\033[33m'; MAGENTA: str = '\033[35m'; GREEN = '\033[32m'
 
 # clears console screen
 def clear_screen():
@@ -23,7 +23,9 @@ if not api_key:
     print('Error: API Key not found.')
     sys.exit(1)
 else:
-    print(YELLOW + 'API Key found!' + END + '\n')
+    print(YELLOW + 'API Key found!' + END)
+    time.sleep(1)
+    clear_screen()
 
 
 def weather_function(city: str) -> bool: # enter a string, return true/false
@@ -38,8 +40,7 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
         city: str = city.title() # get city info
         country_code: str = data['sys']['country'] # get country info
 
-        clear_screen()
-        print(f'{BOLD}Welcome to {city}, {country_code}!\n- - - - - - - - - - - - - ✈️{END}')
+        print(f'\n{END}{BOLD}Welcome to {city}, {country_code}!\n- - - - - - - - - - - - - ✈️{END}')
 
         # temperature + humidity
         getValue: dict = data['main']
@@ -86,9 +87,9 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
         print('Humidity:', humidity, '%')
 
         if precipitation > 0:
-            print(f"Precipitation: {precipitation} mm ({' + '.join(precip_type)})")
+            print(f"Precipitation: {YELLOW}{precipitation}mm ({' + '.join(precip_type)}){END}")
         else:
-            print("Precipitation: 0 mm (None)")
+            print(f'Precipitation: {YELLOW}0mm (None){END}')
 
         return True # city found
 
@@ -99,17 +100,20 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
 # run the program
 while True:
 
-    city_name: str = input('\nEnter city name: ')
+    city_name: str = input(f'Enter city name: {GREEN}')
 
     if weather_function(city_name):
         # city found → ask if user wants to continue
         while True:
-            choice: str = input(f'\n{YELLOW}Do you want to check another city? (y/n): {END}').lower()
+            choice: str = input(f'\n{MAGENTA}Do you want to check another city? (y/n): {END}').lower()
 
             if choice in ('y', 'yes'):
+                print()
                 break  # break inner loop, continue outer loop for new city
 
             elif choice in ('n', 'no'):
+                clear_screen()
+
                 print('Exiting program...')
                 sys.exit(0)  # clean exit
 
