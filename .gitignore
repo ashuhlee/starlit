@@ -10,3 +10,6 @@ __pycache__/
 
 # API key
 .env
+
+# Testing
+tests.py
