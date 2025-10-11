@@ -3,7 +3,6 @@ import sys
 import time
 import requests
 from rich.console import Console
-from rich.spinner import Spinner
 from dotenv import load_dotenv
 
 console = Console()
