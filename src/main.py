@@ -1,32 +1,13 @@
-import os, time
-import requests, sys
-from dotenv import load_dotenv
 
-emoji_map: dict = {
-    'Thunderstorm': '⛈️', 'Drizzle': '🌦️', 'Rain': '🌧️', 'Snow': '❄️',
-    'Clear': '☀️', 'Clouds': '☁️', 'Mist': '🌫️', 'Smoke': '💨',
-    'Haze': '🌫️', 'Dust': '🌪️', 'Fog': '🌫️', 'Sand': '🏜️',
-    'Ash': '🌋', 'Squall': '🌬️', 'Tornado': '🌪️'
-}
+from utils.api import load_api_key
 
-# text styling
-BOLD: str = '\033[1m'; END: str = '\033[0m'; YELLOW: str = '\033[33m'; MAGENTA: str = '\033[35m'; GREEN = '\033[32m'
+from ui.animations import *
+from ui.styles import Style
+from ui.emojis import emoji_map
 
 # clears console screen
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
-
-load_dotenv()
-api_key: str = os.getenv('API_KEY')
-
-if not api_key:
-    print('Error: API Key not found.')
-    sys.exit(1)
-else:
-    print(YELLOW + 'API Key found!' + END)
-    time.sleep(1)
-    clear_screen()
-
 
 def weather_function(city: str) -> bool: # enter a string, return true/false
 
@@ -40,7 +21,11 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
         city: str = city.title() # get city info
         country_code: str = data['sys']['country'] # get country info
 
-        print(f'\n{END}{BOLD}Welcome to {city}, {country_code}!\n- - - - - - - - - - - - - ✈️{END}')
+        welcome_message = f'{Style.end}{Style.bold}Welcome to {city}, {country_code}!\n'
+        print()
+        typewriter(welcome_message, 0.04)
+
+        print(f'- - - - - - - - - - - - - ✈️{Style.end}')
 
         # temperature + humidity
         getValue: dict = data['main']
@@ -87,25 +72,27 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
         print('Humidity:', humidity, '%')
 
         if precipitation > 0:
-            print(f"Precipitation: {YELLOW}{precipitation}mm ({' + '.join(precip_type)}){END}")
+            print(f"Precipitation: {Style.yellow}{precipitation}mm ({' + '.join(precip_type)}){Style.end}")
         else:
-            print(f'Precipitation: {YELLOW}0mm (None){END}')
+            print(f'Precipitation: {Style.yellow}0mm (None){Style.end}')
 
         return True # city found
 
     else:
-        print('City not found. Please try again')
+        print(f'{Style.end}City not found. Please try again\n')
         return False # city not found
+
+api_key = load_api_key()
 
 # run the program
 while True:
 
-    city_name: str = input(f'Enter city name: {GREEN}')
+    city_name: str = input(f'Enter city name: {Style.green}')
 
     if weather_function(city_name):
         # city found → ask if user wants to continue
         while True:
-            choice: str = input(f'\n{MAGENTA}Do you want to check another city? (y/n): {END}').lower()
+            choice: str = input(f'\n{Style.magenta}Do you want to check another city? (y/n): {Style.end}').lower()
 
             if choice in ('y', 'yes'):
                 print()
