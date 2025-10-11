@@ -106,7 +106,7 @@ while True:
     if weather_function(city_name):
         # city found → ask if user wants to continue
         while True:
-            choice: str = input(f'\n{Style.magenta}{Style.bold}︱Do you want to check another city? (y/n): {Style.end}').lower()
+            choice: str = input(f'\n{Style.magenta}︱Check another city? (y/n): {Style.end}').lower()
 
             if choice in ('y', 'yes'):
                 break  # break inner loop, continue outer loop for new city

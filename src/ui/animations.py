@@ -20,7 +20,7 @@ def spinner(text: str, speed: float, found: bool):
 
     print()
 
-    with console.status(f'[cyan]{text}[/cyan]', spinner='dots', spinner_style='cyan'):
+    with console.status(f'[cyan]{text}[/cyan]', spinner='dots', spinner_style='magenta'):
         # length of animation
         time.sleep(speed)
 
