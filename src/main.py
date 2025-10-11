@@ -1,7 +1,11 @@
+from rich.panel import Panel
+from rich.text import Text
+
 from ui.animations import *
-from ui.styles import Style
+from ui.styles import Style, Colors
 from ui.emojis import emoji_map
 
+# console = Console()
 
 def weather_function(city: str) -> bool: # enter a string, return true/false
 
@@ -83,31 +87,33 @@ load_dotenv()
 api_key: str = os.getenv('API_KEY')
 
 if not api_key:
-    print('Error: API Key not found.')
+    print(Style.yellow + 'API Key not found.' + Style.end)
     sys.exit(1)
 else:
-    print(Style.yellow + 'API Key found!' + Style.end)
-    time.sleep(1)
     clear_screen()
+
+
+# print title
+console.print('    weather-cli ☀️   ', style='bold #fff8e8 on #7571F9')
 
 # run the main program
 while True:
+    # using rich package instead of ascii codes
+    console.print(f'\n[{Colors.purple} bold]Enter city name: [/bold {Colors.purple}]')
 
-    city_name: str = input(f'Enter city name: {Style.green}')
+    city_name: str = input(f'{Style.magenta}{Style.bold}> {Style.end}')
 
     if weather_function(city_name):
         # city found → ask if user wants to continue
         while True:
-            choice: str = input(f'\n{Style.magenta}Do you want to check another city? (y/n): {Style.end}').lower()
+            choice: str = input(f'\n{Style.magenta}{Style.bold}︱Do you want to check another city? (y/n): {Style.end}').lower()
 
             if choice in ('y', 'yes'):
-                print()
                 break  # break inner loop, continue outer loop for new city
 
             elif choice in ('n', 'no'):
-                clear_screen()
-
-                print('Exiting program...')
+                # clear_screen()
+                print('\nExiting program...')
                 sys.exit(0)  # clean exit
 
             else:
