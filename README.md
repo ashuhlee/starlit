@@ -7,6 +7,7 @@ Powered by the OpenWeatherMap API and styled with the Python rich library ✨
 
 ## about this project
 I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It turned into a CLI project I'm proud of!
+
 ![preview](preview/preview-2.png)
 
 ## requirements
