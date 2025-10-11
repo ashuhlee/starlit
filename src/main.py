@@ -1,13 +1,7 @@
-
-from utils.api import load_api_key
-
 from ui.animations import *
 from ui.styles import Style
 from ui.emojis import emoji_map
 
-# clears console screen
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 def weather_function(city: str) -> bool: # enter a string, return true/false
 
@@ -18,13 +12,15 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
 
     if data['cod'] != '404':
 
+        spinner('Fetching data...', 1, True)
+
         city: str = city.title() # get city info
         country_code: str = data['sys']['country'] # get country info
 
         welcome_message = f'{Style.end}{Style.bold}Welcome to {city}, {country_code}!\n'
+
         print()
         typewriter(welcome_message, 0.04)
-
         print(f'- - - - - - - - - - - - - ✈️{Style.end}')
 
         # temperature + humidity
@@ -79,12 +75,22 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
         return True # city found
 
     else:
-        print(f'{Style.end}City not found. Please try again\n')
+        spinner('Fetching data...', 1, False)
         return False # city not found
 
-api_key = load_api_key()
+# get api key info from .env file
+load_dotenv()
+api_key: str = os.getenv('API_KEY')
 
-# run the program
+if not api_key:
+    print('Error: API Key not found.')
+    sys.exit(1)
+else:
+    print(Style.yellow + 'API Key found!' + Style.end)
+    time.sleep(1)
+    clear_screen()
+
+# run the main program
 while True:
 
     city_name: str = input(f'Enter city name: {Style.green}')
