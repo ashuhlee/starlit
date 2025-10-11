@@ -13,3 +13,4 @@ __pycache__/
 
 # Testing
 tests.py
+preview/
