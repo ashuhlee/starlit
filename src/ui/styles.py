@@ -1,3 +1,11 @@
+class Colors:
+    # hex codes
+    purple = '#9598f7'
+    red = '#FF5F87'
+    orange = '#F0A475'
+    white = '#FFFFFF'
+    title = '#7571F9'
+
 class Style:
     # ascii codes
     end = '\033[0m'
@@ -6,10 +14,6 @@ class Style:
     magenta = '\033[35m'
     cyan = '\033[36m'
     green = '\033[32m'
-
-class Colors:
-    # hex codes
-    purple = '#9598f7'
 
 class Misc:
     point = f'{Style.yellow}•{Style.end} '
