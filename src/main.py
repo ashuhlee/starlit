@@ -92,9 +92,6 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
 load_dotenv()
 api_key: str = os.getenv('API_KEY')
 
-# if not api_key:
-#     print('WARNING API Key not found.')
-
 # print title
 clear_screen()
 console.print('\n  WEATHER CLI ☀️ ', style=f'bold {Colors.white} on {Colors.title}')

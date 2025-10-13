@@ -5,12 +5,12 @@ Powered by the OpenWeatherMap API and styled with the Python rich library ✨
 
 ![preview](preview/preview-1.gif)
 
-## about this project
+## About this project
 I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It turned into a CLI project I'm proud of!
 
 ![preview](preview/preview-2.png)
 
-## requirements
+## Requirements
 - Python 3.10+
 - Packages
   - [requests](https://pypi.org/project/requests/): used to make http requests to the api
@@ -18,7 +18,7 @@ I built this fun little project as a way to learn more about APIs and creating c
   - [rich](https://rich.readthedocs.io/en/latest/introduction.html): for terminal styling
 - An [OpenWeatherMap](https://openweathermap.org) API key
 
-## usage
+## Usage
 Clone this repository
 ```zsh
 git clone https://github.com/ashuhlee/weather-cli.git
@@ -34,7 +34,7 @@ cd src
 python main.py
 ```
 
-## project structure
+## Project structure
 To make sure everything works properly, make sure your files are structured correctly :)
 ```
 weather-cli/
@@ -53,7 +53,7 @@ weather-cli/
 └── README.md
 ```
 
-## credits
+## Credits
 - [rich](https://github.com/Textualize/rich) for the cli styling
 - [OpenWeatherMap](https://openweathermap.org) for the weather api
 - [charm](https://github.com/charmbracelet) for the color palette inspo 🎨
