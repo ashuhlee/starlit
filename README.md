@@ -38,18 +38,21 @@ python main.py
 To make sure everything works properly, make sure your files are structured correctly :)
 ```
 weather-cli/
-│
 ├── src/
 │   ├── main.py
-│   ├── ui/
+│   │
+│   ├── core/
 │   │   ├── __init__.py
-│   │   ├── animations.py
-│   │   ├── styles.py
-│   │   ├── emojis.py
-│   │   └── imports.py
-│   └── ...
+│   │   └── timezone.py
+│   │
+│   └── ui/
+│       ├── __init__.py
+│       ├── animations.py
+│       ├── emojis.py
+│       └── styles.py
 │
 ├── .env
+├── .gitignore
 └── README.md
 ```
 
