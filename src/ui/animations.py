@@ -4,6 +4,7 @@ import time
 import requests
 from rich.console import Console
 from dotenv import load_dotenv
+from typing import Any
 
 console = Console()
 

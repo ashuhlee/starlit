@@ -1,19 +1,20 @@
 from ui.animations import *
 from ui.styles import Style, Colors, Misc
-from ui.emojis import emoji_map
+from ui.emojis import weather_emoji
 
+from core.timezone import get_local_time
 
 def weather_function(city: str) -> bool: # enter a string, return true/false
 
-    complete_url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
+    complete_url: str = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
 
     response: requests.Response = requests.get(complete_url)
     data: dict = response.json()
 
-    get_code = int(data.get('cod', 0))
+    get_code: int = int(data.get('cod', 0))
 
-    error_code = f'[bold {Colors.white} on {Colors.red}] Error Code {get_code} [/bold {Colors.white} on {Colors.red}]'
-    error_message = data.get('message', 'Unknown error')
+    error_code: str = f'[bold {Colors.white} on {Colors.red}] Error Code {get_code} [/bold {Colors.white} on {Colors.red}]'
+    error_message: str = data.get('message', 'Unknown error')
 
     # code 200 - city found
     if get_code == 200:
@@ -31,7 +32,7 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
     city: str = city.title() # get city info
     country_code: str = data['sys']['country'] # get country info
 
-    welcome_message = f'{Style.end}{Style.bold}Welcome to {city}, {country_code}!\n'
+    welcome_message: str = f'{Style.end}{Style.bold}Welcome to {city}, {country_code}!\n'
 
     print()
     typewriter(welcome_message, 0.04)
@@ -51,25 +52,23 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
     if 'rain' in data:
         rain: float = data['rain'].get('1h', 0.0)
 
-        precipitation = precipitation + rain
+        precipitation: float = precipitation + rain
         precip_type.append('Rain') # add rain to [] if rainy
 
     if 'snow' in data:
         snow: float = data['snow'].get('1h', 0.0)
 
-        precipitation = precipitation + snow
+        precipitation: float = precipitation + snow
         precip_type.append('Snow') # add snow to [] if snowy
 
     # weather info
-    weather = data['weather'][0] # get weather info
+    weather: Any = data['weather'][0] # get weather info
     condition: str = weather['main'] # current condition (clear, snow, clouds...)
 
-    emoji: str
-
-    if condition in emoji_map:
-        emoji = emoji_map[condition]
+    if condition in weather_emoji:
+        emoji: str = weather_emoji[condition]
     else:
-        emoji = '🌍'
+        emoji: str = '🌍'
 
     # change condition naming convention
     if condition == 'Clouds':
@@ -85,6 +84,10 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
         print(f"{Misc.point}Precipitation: {precipitation}mm ({' + '.join(precip_type)})")
     else:
         print(f'{Misc.point}Precipitation: 0mm (None)')
+
+    # timezone
+    curr_timezone: str = get_local_time(data['timezone'])
+    console.print(f'\n🕓 [bold]Local time: {curr_timezone}[/bold]')
 
     return True # city found
 
@@ -109,14 +112,14 @@ while True:
     if weather_function(city_name):
         # city found → ask if user wants to continue
         while True:
-            choice: str = input(f'\n{Style.magenta}Would you like to search another city? (y/n): {Style.end}').lower()
+            choice: str = input(f'\n{Style.magenta}Explore another forecast? (y/n): {Style.end}').lower()
 
             if choice.lower() in ('y', 'yes'):
                 break  # break inner loop, continue outer loop for new search
 
             elif choice.lower() in ('n', 'no'):
                 # clear_screen()
-                console.print('\nClosing weather forecast app...', style='bold')
+                console.print('\nClosing weather forecast app..', style='bold')
                 sys.exit(0)  # clean
 
             elif choice.lower() in ('q', '-q', '--q', 'quit'):
