@@ -1,64 +1,90 @@
 # weather-cli 🌥️
 weather-cli is a lightweight and colorful terminal application that lets you check the current weather for any city in the world.
 
-Powered by the OpenWeatherMap API and styled with the Python rich library ✨
+Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
 
 ![preview](preview/preview-1.gif)
 
-## About this project
-I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It turned into a CLI project I'm proud of!
-
-![preview](preview/preview-2.png)
-
 ## Requirements
-- Python 3.10+
-- Packages
-  - [requests](https://pypi.org/project/requests/): used to make http requests to the api
-  - [python-dotenv](https://pypi.org/project/python-dotenv/): loads the api key in the .env file
-  - [rich](https://rich.readthedocs.io/en/latest/introduction.html): for terminal styling
+- Python 3.13+
+- pip package manager
 - An [OpenWeatherMap](https://openweathermap.org) API key
 
-## Usage
-Clone this repository
+## Installation
+1. **Clone this repository**
 ```zsh
 git clone https://github.com/ashuhlee/weather-cli.git
 cd weather-cli
 ```
-Create a `.env` file to store your API key.
+2. **Install dependencies**
+
+Some packages are required for this project. They will automatically be installed if you run:
+```zsh
+pip install -e .
+```
+3. **Create a `.env` file to store your API key.**
 ```
 echo "API_KEY=your_openweather_api_key" > api.env
 ```
-Run the `main.py` file located in `/src`
+> Get your API key from [OpenWeatherMap](https://openweathermap.org/api)
+
+## Usage
+Simply run this command and follow the interactive prompts:
+
+```zsh
+weather-cli
 ```
-cd src
-python main.py
-```
+
+## Example session
+![preview](preview/preview-2.png)
 
 ## Project structure
-To make sure everything works properly, make sure your files are structured correctly :)
 ```
 weather-cli/
-├── src/
-│   ├── main.py
+├── src/                      # Main source code folder
+│   ├── main.py               # Entry point of the CLI app
 │   │
-│   ├── core/
-│   │   ├── __init__.py
-│   │   └── timezone.py
+│   ├── core/                
+│   │   ├── __init__.py       # Makes `core` a Python package
+│   │   └── timezone.py       # Handles fetching timezone
 │   │
-│   └── ui/
-│       ├── __init__.py
-│       ├── animations.py
-│       ├── emojis.py
-│       └── styles.py
+│   └── ui/                   # User interface components and styling
+│       ├── __init__.py       # Makes `ui` a Python package
+│       ├── animations.py     # Text and terminal animations
+│       ├── emojis.py         # Emoji definitions
+│       ├── styles.py         # Colors, ascii codes, and formatting
+│       └── system_utils.py   # System-level actions (exit, clear screen, etc.)
 │
-├── .env
-├── .gitignore
-└── README.md
+├── .env                      # Stores OpenWeatherMap API key
+├── .gitignore               
+├── README.md                
+└── setup.py                  # Configuration for packaging & installing the CLI
+
 ```
 
-## Credits
-- [rich](https://github.com/Textualize/rich) for the cli styling
-- [OpenWeatherMap](https://openweathermap.org) for the weather api
-- [charm](https://github.com/charmbracelet) for the color palette inspo 🎨
+## What's next?
+**Help Menu:** Add a help guide for new users using flags
+```zsh
+weather-cli -h
+```
+```zsh
+weather-cli --help
+```
+**Direct Arguments:** Ability to pass city names directly from the terminal, for example:
+```zsh
+weather-cli seattle
+```
 
-Disclaimer: the project and README is an active work in progress
+## Tech stack
+
+- **[Rich](https://github.com/Textualize/rich)** - Beautiful terminal formatting
+- **[terminal-text-effects](https://github.com/ChrisBuilds/terminaltexteffects)** - Smooth text animations
+- **[Requests](https://pypi.org/project/requests/)** - HTTP requests for weather API
+- **[Python-dotenv](https://pypi.org/project/python-dotenv/)** - Environment variable management
+---
+### About this project
+I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It turned into a CLI project I'm proud of!
+
+This project is an active work in progress. Thank you to [charm](https://github.com/charmbracelet) for the color palette inspo 🎨
+
+⭐ If you found this project helpful, please consider giving it a star!
