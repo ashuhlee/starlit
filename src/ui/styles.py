@@ -3,10 +3,14 @@ from rich.console import Console
 console = Console()
 
 # show label to left of text
-def label(tag: str, text: str, color: str):
+def label(tag: str, text: str, color: str, newline: bool):
     tag = tag.upper()
-    console.print(
-        f'\n[bold {Colors.white} on {color}] {tag} [/bold {Colors.white} on {color}] {text}')
+    if newline:
+        console.print(
+            f'\n[bold {Colors.white} on {color}] {tag} [/bold {Colors.white} on {color}] {text}')
+    else:
+        console.print(
+            f'[bold {Colors.white} on {color}] {tag} [/bold {Colors.white} on {color}] {text}')
 
 class Colors:
     # hex codes

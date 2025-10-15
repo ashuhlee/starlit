@@ -139,7 +139,7 @@ while True:
                 force_quit()
 
             else:
-                label("warn", "Please enter 'y' or 'n' ", Colors.orange)  # prompt again
+                label("warn", "Please enter 'y' or 'n' ", Colors.orange, True)  # prompt again
     else:
         # city not found → ask again (outer loop continues)
         continue
