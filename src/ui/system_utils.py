@@ -19,7 +19,7 @@ def exit_app():
     print(hide_cur)
     label('exit', 'Exiting weather-cli..', Colors.pink)
 
-    time.sleep(5), clear_screen()
+    time.sleep(0.5), clear_screen()
 
     label('exit', 'Exited weather-cli', Colors.pink)
     print(show_cur, end='', flush=True)
