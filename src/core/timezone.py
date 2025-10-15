@@ -13,4 +13,4 @@ def get_local_time(offset_seconds: int) -> str:
 
     formatted_time: str = local_time.strftime('%I:%M %p')
 
-    return f'{formatted_time} ({gmt_label})'
+    return f'[yellow]{formatted_time}[/yellow] ({gmt_label})'

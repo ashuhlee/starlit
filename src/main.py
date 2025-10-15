@@ -1,3 +1,5 @@
+from ui.system_utils import *
+
 from ui.animations import *
 from ui.styles import Style, Colors, Misc
 from ui.emojis import weather_emoji
@@ -8,8 +10,14 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
 
     complete_url: str = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
 
+    # loading timer to request data
+    fetch_start: float = time.perf_counter()
+
     response: requests.Response = requests.get(complete_url)
     data: dict = response.json()
+
+    fetch_end: float = time.perf_counter() - fetch_start
+    process_time: float = max(fetch_end, 0.5)
 
     get_code: int = int(data.get('cod', 0))
 
@@ -18,13 +26,14 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
 
     # code 200 - city found
     if get_code == 200:
-        spinner('Fetching data...', 1, True)
+        spinner('Fetching data...', process_time, True)
     # code 404 - city not found
     elif get_code == 404:
-        spinner('Fetching data...', 1, False)
+        spinner('Fetching data...', process_time, False)
+        console.print(f'{error_code} {error_message}')
         return False
     else:
-        spinner('Fetching data...', 1, None)
+        spinner('Fetching data...', process_time, None)
         # print error type. if error type doesn't exist, print unknown error
         console.print(f'{error_code} {error_message}')
         return False
@@ -32,11 +41,12 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
     city: str = city.title() # get city info
     country_code: str = data['sys']['country'] # get country info
 
-    welcome_message: str = f'{Style.end}{Style.bold}Welcome to {city}, {country_code}!\n'
+    welcome_message: str = f'Welcome to {city}, {country_code}!\n'
 
     print()
-    typewriter(welcome_message, 0.04)
-    print(f'- - - - - - - - - - - - - ✈️{Style.end}')
+
+    text_effect(welcome_message, 1)
+    plane_anim()
 
     # temperature + humidity
     getValue: dict = data['main']
@@ -77,13 +87,17 @@ def weather_function(city: str) -> bool: # enter a string, return true/false
     elif condition == 'Haze':
         condition = 'Hazy'
 
-    print(f'{Misc.point}Currently: {condition} ({temp} °C)', emoji)
-    print(f'{Misc.point}Humidity: {humidity}%')
+    elif condition == 'Rain':
+        condition = 'Rainy'
 
-    if precipitation > 0:
-        print(f"{Misc.point}Precipitation: {precipitation}mm ({' + '.join(precip_type)})")
-    else:
-        print(f'{Misc.point}Precipitation: 0mm (None)')
+    curr_weather: str = f'{Misc.point}Currently: {condition} ({temp} °C) {emoji}'
+    curr_hum: str = f'{Misc.point}Humidity: {humidity}%'
+
+    precip_status: str = f"{Misc.point}Precipitation: {precipitation}mm ({' + '.join(precip_type)})"
+    precip_status_none: str = f'{Misc.point}Precipitation: 0mm (None)'
+
+    # temperature + humidity
+    print(curr_weather, curr_hum, precip_status if precipitation > 0 else precip_status_none, sep='\n')
 
     # timezone
     curr_timezone: str = get_local_time(data['timezone'])
@@ -104,29 +118,28 @@ while True:
     # using rich package instead of ascii codes
     console.print(f'\n[bold {Colors.purple}]Enter city name: [/bold {Colors.purple}]')
 
-    city_name: str = input(f'{Style.magenta}{Style.bold} {Style.end}')
+    city_name: str = input(f'{Misc.user_input}')
 
-    if city_name.lower() in ('q', '-q', '--q', 'quit'):
+    if city_name.lower() in ('q', 'quit'):
         force_quit()
 
     if weather_function(city_name):
         # city found → ask if user wants to continue
         while True:
-            choice: str = input(f'\n{Style.magenta}Explore another forecast? (y/n): {Style.end}').lower()
+            choice = console.input(
+                f'\n[bold {Colors.purple}]Explore another forecast?[/bold {Colors.purple}] [magenta] [/magenta]').lower()
 
             if choice.lower() in ('y', 'yes'):
-                break  # break inner loop, continue outer loop for new search
+                break  # start new search
 
             elif choice.lower() in ('n', 'no'):
-                # clear_screen()
-                console.print('\nClosing weather forecast app..', style='bold')
-                sys.exit(0)  # clean
+                exit_app()
 
-            elif choice.lower() in ('q', '-q', '--q', 'quit'):
+            elif choice.lower() in ('q', '-q', '--quit', 'quit'):
                 force_quit()
 
             else:
-                console.print(f"\n[bold {Colors.white} on {Colors.orange}] WARN [/bold {Colors.white} on {Colors.orange}] Please enter 'y' or 'n'.")  # prompt again
+                label("warn", "Please enter 'y' or 'n' ", Colors.orange)  # prompt again
     else:
         # city not found → ask again (outer loop continues)
         continue

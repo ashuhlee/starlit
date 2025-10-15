@@ -16,6 +16,7 @@ weather_emoji: dict = {
     'Tornado': '🌪️'
 }
 
+# not yet implemented
 clock_emoji: dict = {
     "12:00": "🕛",
     "12:30": "🕧",
