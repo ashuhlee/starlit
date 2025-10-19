@@ -1,7 +1,6 @@
 # starlit
 A minimal and customizable weather CLI written in Python
 
----
 
 ![preview](assets/preview-1.png)
 Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
@@ -117,7 +116,6 @@ starlit --version
 starlit --help
 ```
 
-
 ## Tech stack
 
 - **[Rich](https://github.com/Textualize/rich)** - Beautiful terminal formatting
@@ -125,7 +123,7 @@ starlit --help
 - **[terminal-text-effects](https://github.com/ChrisBuilds/terminaltexteffects)** - Smooth text animations
 - **[Requests](https://pypi.org/project/requests/)** - HTTP requests for weather API
 - **[Python-dotenv](https://pypi.org/project/python-dotenv/)** - Environment variable management
----
+
 ### About this project
 I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It grew into a CLI project I'm proud of!
 
