@@ -124,9 +124,10 @@ starlit --help
 - **[Requests](https://pypi.org/project/requests/)** - HTTP requests for weather API
 - **[Python-dotenv](https://pypi.org/project/python-dotenv/)** - Environment variable management
 
-### About this project
+
+## About this project
 I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It grew into a CLI project I'm proud of!
 
 This project is an active work in progress. Thank you to [charm](https://github.com/charmbracelet) for the color palette inspo 🎨 and to [wego](https://github.com/schachmat/wego/tree/master) for the ASCII icons
 
-⭐ If you found this project helpful, please consider giving it a star!
+⭐ If you like this project, please consider giving it a star!
