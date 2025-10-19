@@ -16,6 +16,8 @@ __pycache__/
 
 # Packaging
 *.egg-info/
+build
+requirements.txt
 
 # Testing
-tests.py
+tests

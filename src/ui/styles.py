@@ -1,6 +1,32 @@
+
 from rich.console import Console
+from rich_gradient import Gradient
+
+from ui.helpers import *
 
 console = Console()
+load_dotenv()
+
+class Colors:
+
+    DEFAULT_1 = '7571F9'
+    DEFAULT_2 = 'F7A4F4'
+
+    # hex codes
+    title = '#7571F9'
+    purple = '#9598f7'
+    pink = '#F785EE'
+
+    dark_pink = 'F06EE6'
+    dark_pink_2 = '#F06EE6'
+
+    red = '#FF5F87'
+    orange = '#F09564'
+    white = '#FFFFFF'
+
+    CUSTOM_LABEL = os.getenv('LABEL_COLOR', dark_pink)  # defaults to dark pink
+    custom_label = f'#{CUSTOM_LABEL}'
+
 
 # show label to left of text
 def label(tag: str, text: str, color: str, newline: bool):
@@ -12,14 +38,14 @@ def label(tag: str, text: str, color: str, newline: bool):
         console.print(
             f'[bold {Colors.white} on {color}] {tag} [/bold {Colors.white} on {color}] {text}')
 
-class Colors:
-    # hex codes
-    title = '#7571F9'
-    purple = '#9598f7'
-    pink = '#F785EE'
-    red = '#FF5F87'
-    orange = '#F0A475'
-    white = '#FFFFFF'
+def gradient_text(text: str):
+
+    color1 = make_valid_hex(color1_rich, DEFAULT_1_RICH)
+    color2 = make_valid_hex(color2_rich, DEFAULT_2_RICH)
+
+    # applying color 2 three times bc you can barely see it
+    console.print(Gradient(text.rstrip('\n'), colors=[color1] + ([color2] * 3)))
+    print('\033[?25h', end='') # show cursor
 
 # ascii codes
 class Style:
@@ -46,16 +72,7 @@ class Style:
     cyan = '\033[36m'
     white = '\033[37m'
 
-    # bright foreground colors
-    bright_black = '\033[90m'
-    bright_red = '\033[91m'
-    bright_green = '\033[92m'
-    bright_yellow = '\033[93m'
-    bright_blue = '\033[94m'
-    bright_magenta = '\033[95m'
-    bright_cyan = '\033[96m'
-    bright_white = '\033[97m'
-
 class Misc:
     point = f'{Style.yellow}•{Style.end} '
+    divider = f'{Style.yellow}›{Style.end} '
     user_input = f'{Style.magenta}{Style.bold} {Style.end}'
