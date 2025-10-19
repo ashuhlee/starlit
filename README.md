@@ -1,90 +1,134 @@
-# weather-cli 🌥️
-weather-cli is a lightweight and colorful terminal application that lets you check the current weather for any city in the world.
+# starlit
+A minimal and customizable weather CLI written in Python
 
+---
+
+![preview](assets/preview-1.png)
 Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
-
-![preview](preview/preview-1.gif)
 
 ## Requirements
 - Python 3.13+
 - pip package manager
 - An [OpenWeatherMap](https://openweathermap.org) API key
+- utf-8 terminal with 256 colors and nerd font
 
 ## Installation
 1. **Clone this repository**
 ```zsh
-git clone https://github.com/ashuhlee/weather-cli.git
-cd weather-cli
+git clone https://github.com/ashuhlee/starlit.git
+cd starlit
 ```
-2. **Install dependencies**
+
+2. **Create a virtual environment (optional)**
+
+Do this if you'd like starlit dependencies clean and separate from other Python projects
+
+Create the virtual environment:
+```zsh
+# macOS / Linux / Windows
+python -m venv venv
+```
+
+Activate the virtual environment:
+```zsh
+# macOS / Linux
+source venv/bin/activate
+```
+
+```zsh
+# Windows (Command Prompt)
+venv\Scripts\activate.bat
+```
+
+3. **Install dependencies**
 
 Some packages are required for this project. They will automatically be installed if you run:
 ```zsh
-pip install -e .
+pip install .
 ```
-3. **Create a `.env` file to store your API key.**
+4. **Create your `.env` file**
+
+Copy the example environment file:
+
+```zsh
+# macOS / Linux
+cp .env.example .env
 ```
-echo "API_KEY=your_openweather_api_key" > api.env
+```zsh
+# Windows (Command Prompt)
+copy .env.example .env
 ```
 > Get your API key from [OpenWeatherMap](https://openweathermap.org/api)
+> 
+
+## Configuration
+starlit uses a simple `.env` file to store your settings — things like your API key, default city, and how you want the app to look in your terminal.
+
+`API_KEY`: Your OpenWeatherMap API key
+
+### Customize default settings (optional)
+
+| Setting             | Default   | What it does                           |
+| ------------------- |-----------|----------------------------------------|
+| `DEFAULT_CITY`      | `Seattle` | The city shown when you don’t pass one |
+| `UNITS`             | `metric`  | Use `metric` (°C) or `imperial` (°F)   |
+| `DISABLE_ANIMATION` | `false`   | Turns off the title animation          |
+| `SHOW_DT`           | `true`    | Shows local date and time              |
+| `SHOW_ASCII`        | `true`    | Shows the little ASCII art to the left |
+| `SHOW_MSG`          | `true`    | Adds a cute message at the bottom      |
+| `SHOW_EMOJI`        | `true`    | Shows emojis in your terminal          |
+| `EMOJI_TYPE`        | `🐻`      | Choose a cute emoji for messages       |
+
+### Customize colors (optional)
+You can also set your own colors for the gradient title and message labels.
+Use **six-digit** RGB hex codes (no # needed):
+
+```
+COLOR_1=ffb6c1     # Gradient color stop 1
+COLOR_2=9370db     # Gradient color stop 2
+LABEL_COLOR=ffd700 # Color for the message label
+```
 
 ## Usage
-Simply run this command and follow the interactive prompts:
-
-```zsh
-weather-cli
-```
-
-## Example session
-![preview](preview/preview-2.png)
-
-## Project structure
-```
-weather-cli/
-├── src/                      # Main source code folder
-│   ├── main.py               # Entry point of the CLI app
-│   │
-│   ├── core/                
-│   │   ├── __init__.py       # Makes `core` a Python package
-│   │   └── timezone.py       # Handles fetching timezone
-│   │
-│   └── ui/                   # User interface components and styling
-│       ├── __init__.py       # Makes `ui` a Python package
-│       ├── animations.py     # Text and terminal animations
-│       ├── emojis.py         # Emoji definitions
-│       ├── styles.py         # Colors, ascii codes, and formatting
-│       └── system_utils.py   # System-level actions (exit, clear screen, etc.)
-│
-├── .env                      # Stores OpenWeatherMap API key
-├── .gitignore               
-├── README.md                
-└── setup.py                  # Configuration for packaging & installing the CLI
 
 ```
+# basic usage
+starlit
 
-## What's next?
-**Help Menu:** Add a help guide for new users using flags
-```zsh
-weather-cli -h
+# specify city via command line
+starlit tokyo
+
+# start interactive mode
+starlit --interactive 
+
+# opens the .env file in your default editor
+starlit --edit
+
+# shows config in .env file (if found)
+starlit --config
+
+# shows contents of .env file (if found)
+starlit --config --show-full
+
+# show version
+starlit --version
+
+# show help
+starlit --help
 ```
-```zsh
-weather-cli --help
-```
-**Direct Arguments:** Ability to pass city names directly from the terminal, for example:
-```zsh
-weather-cli seattle
-```
+
 
 ## Tech stack
 
 - **[Rich](https://github.com/Textualize/rich)** - Beautiful terminal formatting
+- **[rich-gradient](https://github.com/maxludden/rich-gradient)** - Gradient text formatting
 - **[terminal-text-effects](https://github.com/ChrisBuilds/terminaltexteffects)** - Smooth text animations
 - **[Requests](https://pypi.org/project/requests/)** - HTTP requests for weather API
 - **[Python-dotenv](https://pypi.org/project/python-dotenv/)** - Environment variable management
 ---
 ### About this project
-I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It turned into a CLI project I'm proud of!
+I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It grew into a CLI project I'm proud of!
 
-This project is an active work in progress. Thank you to [charm](https://github.com/charmbracelet) for the color palette inspo 🎨
+This project is an active work in progress. Thank you to [charm](https://github.com/charmbracelet) for the color palette inspo 🎨 and to [wego](https://github.com/schachmat/wego/tree/master) for the ASCII icons
 
 ⭐ If you found this project helpful, please consider giving it a star!
