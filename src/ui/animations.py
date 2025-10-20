@@ -1,5 +1,5 @@
 
-from ui.system_utils import *
+from utils.system_utils import *
 
 from terminaltexteffects import Color
 from terminaltexteffects.effects.effect_print import Print

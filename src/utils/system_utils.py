@@ -16,7 +16,7 @@ warnings_log = []
 def log_warning(msg: str):
     warnings_log.append(msg)
 
-## ADD A RULE OR DIVIDER
+
 def print_warnings():
 
     if len(warnings_log) == 1:
