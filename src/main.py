@@ -29,7 +29,7 @@ VERSION = "0.1.0"
 def main():
     parser = argparse.ArgumentParser(
         prog="starlit",
-        description="starlit weather cli 🐻"
+        description="A minimal, cute and customizable weather cli. ☁️",
     )
 
     # optional positional argument for city (default if none)
@@ -123,6 +123,8 @@ def main():
                 print(f"  ├─ Color 1: {COLOR_1}")
                 print(f"  ├─ Color 2: {COLOR_2}")
                 print(f"  └─ Label Color: {LABEL_COLOR}")
+
+                console.print("\nTo show full contents of the .env file, append the flag [yellow]--show-full[/yellow]")
 
             else:
 
