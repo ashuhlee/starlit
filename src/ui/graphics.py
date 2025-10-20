@@ -1,13 +1,10 @@
-# tw: messy code :(
+
 from ui.helpers import *
 from ui.styles import Misc
 
 load_dotenv()
 UNITS = os.getenv('UNITS', 'metric')
 
-# ────────────────────────────────
-#    WEATHER CONDITION LABELS
-# ────────────────────────────────
 condition_labels = {
     'Clouds': 'Cloudy',
     'Haze': 'Hazy',
@@ -18,9 +15,6 @@ condition_labels = {
     'Fog': 'Foggy'
 }
 
-# ────────────────────────────────
-#           ASCII ART
-# ────────────────────────────────
 default_ascii = [
         r'',
         r'               {weather}',
@@ -85,9 +79,7 @@ no_ascii = [
     r'{precip}',
     ]
 
-# ────────────────────────────────
-#      RANDOMIZED MESSAGES
-# ────────────────────────────────
+
 weather_msg: dict = {
 
     'Thunderstorm': ["yeah, you're gonna need an umbrella.",
@@ -131,9 +123,7 @@ weather_msg: dict = {
                 'dont. go. outside.']
 }
 
-# ────────────────────────────────
-#        WEATHER EMOJIS
-# ────────────────────────────────
+
 weather_emoji: dict = {
 
     'Thunderstorm': '⛈️',
