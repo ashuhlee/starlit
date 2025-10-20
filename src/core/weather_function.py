@@ -9,10 +9,13 @@ load_dotenv()
 
 API_KEY = os.getenv('API_KEY')
 UNITS = os.getenv('UNITS', 'metric')
+
 DISABLE_ANIMATION = os.getenv('DISABLE_ANIMATION', 'false')
+
 SHOW_DT = os.getenv('SHOW_DT', 'true')
 SHOW_ASCII = os.getenv('SHOW_ASCII', 'true')
 SHOW_MSG = os.getenv('SHOW_MSG', 'true')
+
 SHOW_EMOJI = os.getenv('SHOW_EMOJI', 'true')
 EMOJI_TYPE = os.getenv('EMOJI_TYPE', '🐻')
 
