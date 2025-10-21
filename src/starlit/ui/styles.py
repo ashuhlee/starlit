@@ -73,6 +73,5 @@ class Style:
     white = '\033[37m'
 
 class Misc:
-    point = f'{Style.yellow}•{Style.end} '
     divider = f'{Style.yellow}›{Style.end} '
     user_input = f'{Style.magenta}{Style.bold} {Style.end}'
