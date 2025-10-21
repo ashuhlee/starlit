@@ -1,7 +1,8 @@
+
 from starlit.ui.helpers import *
 from starlit.ui.styles import Colors, label, gradient_text
 
-from starlit.ui.animations import spinner, text_effect, console
+from starlit.ui.animations import spinner, text_effect
 from starlit.ui.graphics import weather_msg, weather_emoji, display_ascii
 
 
@@ -41,26 +42,27 @@ def weather_function(city: str):  # enter a string, return true/false
 
     # get response code
     get_code: int = int(data.get('cod', 0))
-
-    error_code: str = f'[bold {Colors.white} on {Colors.red}] Error {get_code} [/bold {Colors.white} on {Colors.red}]'
-    error_message: str = data.get('message', 'Unknown error').lower() # if error type doesn't exist, print unknown error
+    error_msg: str = data.get('message', 'Unknown error') # if error type doesn't exist, print unknown error
 
     # code 200 - city found
     if get_code == 200:
         spinner('Fetching data...', process_time, True, disable_anim.lower() != 'true')
+
     # code 404 - city not found
     elif get_code == 404:
         spinner('Fetching data...', process_time, False, disable_anim.lower() != 'true')
-        console.print(f'{error_code} {error_message}')
+        label(f'Error {get_code}', error_msg, Colors.red, False)
         return False
+
     # code 401 - invalid api key
     elif get_code == 401:
         spinner('Fetching data...', process_time, False, disable_anim.lower() != 'true')
-        console.print(f'{error_code} {error_message}')
-        return False
+        label(f'Error {get_code}', error_msg, Colors.red, False)
+        sys.exit(1)
+
     else:
         spinner('Fetching data...', process_time, None, disable_anim.lower() != 'true')
-        console.print(f'{error_code} {error_message}') # print error type
+        label(f'Error {get_code}', error_msg, Colors.red, False) # print error type
         return False
 
     getSys: dict = data.get('sys', {})
