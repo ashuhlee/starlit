@@ -4,16 +4,13 @@ from .utils.system_utils import clear_screen, force_quit, exit_app
 def interactive_mode():
 
     clear_screen()
-    # interactive mode: runs a loop
-    while True:
-        label('start', 'Interactive mode', Colors.title, False)
+    label('start', 'Interactive mode', Colors.title, False)
 
+    while True:
+        # interactive mode: runs a loop
         console.print(f'\n[bold {Colors.title}]Enter city name: [/bold {Colors.title}]')
 
         city_name: str = input(f'{Misc.user_input}')
-
-        if city_name.lower() in ('q', 'quit'):
-            force_quit()
 
         if weather_function(city_name):
             # city found → ask if user wants to continue
@@ -23,6 +20,7 @@ def interactive_mode():
 
                 if choice.lower() in ('y', 'yes'):
                     clear_screen()
+                    label('start', 'Interactive mode', Colors.title, False)
                     break  # start new search
 
                 elif choice.lower() in ('n', 'no'):
