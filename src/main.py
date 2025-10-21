@@ -9,22 +9,22 @@ from interactive_mode import interactive_mode
 load_dotenv()
 console = Console()
 
-API_KEY = os.getenv('API_KEY')
-DEFAULT_CITY = os.getenv("DEFAULT_CITY", None)
+api_key = os.getenv('API_KEY')
+default_city = os.getenv("DEFAULT_CITY", None)
 
-UNITS = os.getenv('UNITS', 'Default')
-DISABLE_ANIMATION = os.getenv('DISABLE_ANIMATION', 'Default')
-SHOW_DT = os.getenv('SHOW_DT', 'Default')
-SHOW_ASCII = os.getenv('SHOW_ASCII', 'Default')
-SHOW_MSG = os.getenv('SHOW_MSG', 'Default')
-SHOW_EMOJI = os.getenv('SHOW_EMOJI', 'Default')
-EMOJI_TYPE = os.getenv('EMOJI_TYPE', 'Default')
+units = os.getenv('UNITS', 'Default')
+disable_anim = os.getenv('DISABLE_ANIMATION', 'Default')
+show_dt = os.getenv('SHOW_DT', 'Default')
+show_ascii = os.getenv('show_ascii', 'Default')
+show_msg = os.getenv('show_msg', 'Default')
+show_emoji = os.getenv('SHOW_EMOJI', 'Default')
+emoji_type = os.getenv('EMOJI_TYPE', 'Default')
 
-COLOR_1 = os.getenv('COLOR_1', 'Default')
-COLOR_2 = os.getenv('COLOR_2', 'Default')
-LABEL_COLOR = os.getenv('LABEL_COLOR', 'Default')
+color_1 = os.getenv('COLOR_1', 'Default')
+color_2 = os.getenv('COLOR_2', 'Default')
+label_color = os.getenv('LABEL_COLOR', 'Default')
 
-VERSION = "0.1.0"
+version = "0.1.0"
 
 def main():
     parser = argparse.ArgumentParser(
@@ -82,7 +82,7 @@ def main():
 
     # print version
     if args.version:
-        print(f"starlit version {VERSION}")
+        print(f"starlit version {version}")
         return
 
     # run interactive mode
@@ -102,27 +102,29 @@ def main():
             if not args.show_full:
 
                 print("API Settings:")
-                console.print(f"  └─ API Key: {"[green]Connected[/green]" if API_KEY and len(API_KEY.strip()) == api_key_length 
+                console.print(f"  └─ API Key: {"[green]Connected[/green]" if api_key and len(api_key.strip()) == api_key_length 
                 else '[red]Not Connected[/red]'}")
 
                 values = {"true": "Yes", "false": "No"}
+                anim = {"false": "Enabled", "true": "Disables"}
 
                 print("\nDisplay Settings:")
-                print(f"  ├─ Default City: {DEFAULT_CITY.capitalize()}")
-                print(f"  ├─ Units: {UNITS.capitalize()}")
+                print(f"  ├─ Default City: {default_city.capitalize()}")
+                print(f"  ├─ Units: {units.capitalize()}")
+                print(f"  ├─ Animations: {anim.get(disable_anim.lower(), "Yes")}")
 
-                print(f"  ├─ Show Date & Time: {values.get(SHOW_DT.lower(), "Yes")}")
-                print(f"  ├─ Show Ascii: {values.get(SHOW_ASCII.lower(), "Yes")}")
-                print(f"  ├─ Show Message: {values.get(SHOW_MSG.lower(), "Yes")}")
+                print(f"  ├─ Show Date & Time: {values.get(show_dt.lower(), "Yes")}")
+                print(f"  ├─ Show Ascii: {values.get(show_ascii.lower(), "Yes")}")
+                print(f"  ├─ Show Message: {values.get(show_msg.lower(), "Yes")}")
 
-                print(f"  ├─ Show Emojis: {values.get(SHOW_EMOJI.lower(), "Yes")}")
-                print(f"  └─ Emoji Type: {EMOJI_TYPE}")
+                print(f"  ├─ Show Emojis: {values.get(show_emoji.lower(), "Yes")}")
+                print(f"  └─ Emoji Type: {emoji_type}")
 
                 print("\nColor Settings:")
 
-                print(f"  ├─ Color 1: {COLOR_1}")
-                print(f"  ├─ Color 2: {COLOR_2}")
-                print(f"  └─ Label Color: {LABEL_COLOR}")
+                print(f"  ├─ Color 1: {color_1}")
+                print(f"  ├─ Color 2: {color_2}")
+                print(f"  └─ Label Color: {label_color}")
 
                 console.print("\nTo show full contents of the .env file, append the flag [yellow]--show-full[/yellow]")
 
@@ -135,7 +137,7 @@ def main():
 
                         # hide api key in terminal
                         if strip.startswith("API_KEY="):
-                            if API_KEY and len(API_KEY.strip()) == api_key_length:
+                            if api_key and len(api_key.strip()) == api_key_length:
                                 console.print("API_KEY: [green]Connected[/green]\n")
                             else:
                                 console.print("API_KEY: [red]Not connected[/red].\n")
@@ -154,8 +156,8 @@ def main():
         return
 
     # use default city if no args provided
-    if DEFAULT_CITY:
-        weather_function(DEFAULT_CITY)
+    if default_city:
+        weather_function(default_city)
         return
 
     # fallback if no city is available
@@ -163,3 +165,6 @@ def main():
           'No default city found in .env file. Use -i for interactive mode or provide a city.',
           Colors.red, True)
 
+
+if __name__ == "__main__":
+    main()
