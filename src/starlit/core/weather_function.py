@@ -1,31 +1,34 @@
-from starlit.ui.animations import *
-from starlit.ui.graphics import *
-
-from starlit.ui.styles import Colors, label, gradient_text
 from starlit.ui.helpers import *
+from starlit.ui.styles import Colors, label, gradient_text
+
+from starlit.ui.animations import spinner, text_effect, console
+from starlit.ui.graphics import weather_msg, weather_emoji, display_ascii
+
 
 from starlit.core.timezone import *
 from starlit.core.wind_direction import wind_arrow
 
+from starlit.utils.system_utils import print_warnings
+
 load_dotenv()
 
-API_KEY = os.getenv('API_KEY')
-UNITS = os.getenv('UNITS', 'metric')
+api_key = os.getenv('API_KEY')
+units = os.getenv('UNITS', 'metric')
 
-DISABLE_ANIMATION = os.getenv('DISABLE_ANIMATION', 'false')
+disable_anim = os.getenv('DISABLE_ANIMATION', 'false')
 
-SHOW_DT = os.getenv('SHOW_DT', 'true')
-SHOW_ASCII = os.getenv('SHOW_ASCII', 'true')
-SHOW_MSG = os.getenv('SHOW_MSG', 'true')
+show_dt = os.getenv('SHOW_DT', 'true')
+show_ascii = os.getenv('SHOW_ASCII', 'true')
+show_msg = os.getenv('SHOW_MSG', 'true')
 
-SHOW_EMOJI = os.getenv('SHOW_EMOJI', 'true')
-EMOJI_TYPE = os.getenv('EMOJI_TYPE', '🐻')
+show_emoji = os.getenv('SHOW_EMOJI', 'true')
+emoji_type = os.getenv('EMOJI_TYPE', '🐻')
 
 
 def weather_function(city: str):  # enter a string, return true/false
 
     # set city, api key + unit of measurement
-    complete_url: str = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units={UNITS}'
+    complete_url: str = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units={units}'
 
     # loading timer to request data
     fetch_start: float = time.perf_counter()
@@ -44,19 +47,19 @@ def weather_function(city: str):  # enter a string, return true/false
 
     # code 200 - city found
     if get_code == 200:
-        spinner('Fetching data...', process_time, True)
+        spinner('Fetching data...', process_time, True, disable_anim.lower() != 'true')
     # code 404 - city not found
     elif get_code == 404:
-        spinner('Fetching data...', process_time, False)
+        spinner('Fetching data...', process_time, False, disable_anim.lower() != 'true')
         console.print(f'{error_code} {error_message}')
         return False
     # code 401 - invalid api key
     elif get_code == 401:
-        spinner('Fetching data...', process_time, False)
+        spinner('Fetching data...', process_time, False, disable_anim.lower() != 'true')
         console.print(f'{error_code} {error_message}')
         return False
     else:
-        spinner('Fetching data...', process_time, None)
+        spinner('Fetching data...', process_time, None, disable_anim.lower() != 'true')
         console.print(f'{error_code} {error_message}') # print error type
         return False
 
@@ -86,11 +89,11 @@ def weather_function(city: str):  # enter a string, return true/false
     wind_speed: float = getWind.get('speed', 0.0)
 
     # set unit types
-    if UNITS.lower() == 'metric':
+    if units.lower() == 'metric':
         wind_val: float = round(wind_speed * 3.6, 1)
         wind_unit = 'km/h'
 
-    elif UNITS.lower() == 'imperial':
+    elif units.lower() == 'imperial':
         wind_val: float = round(wind_speed, 1)
         wind_unit = 'mph'
 
@@ -127,21 +130,21 @@ def weather_function(city: str):  # enter a string, return true/false
         emoji: str = ''
 
     # show emoji config #1
-    if SHOW_EMOJI.lower() == 'true':
+    if show_emoji.lower() == 'true':
         welcome_message: str = f'Forecast for {city}, {country_code} {emoji}\n'
 
-    elif SHOW_EMOJI.lower() == 'false':
+    elif show_emoji.lower() == 'false':
         welcome_message: str = f'Forecast for {city}, {country_code}\n'
 
     else:
         welcome_message: str = f'Forecast for {city}, {country_code} {emoji}\n' # fallback: show emoji
 
     # print welcome message
-    if DISABLE_ANIMATION.lower() == 'true':
-        time.sleep(0.2)
+    if disable_anim.lower() == 'true':
+        time.sleep(0.1)
         gradient_text(welcome_message)
 
-    elif DISABLE_ANIMATION.lower() == 'false':
+    elif disable_anim.lower() == 'false':
         text_effect(welcome_message, 1)
 
     else:
@@ -159,20 +162,20 @@ def weather_function(city: str):  # enter a string, return true/false
     curr_wind: str = f'wind     {Misc.divider}  {wind_val} {wind_unit} {wind_dir}'
 
     # show ascii configs
-    if SHOW_ASCII.lower() == 'true':
+    if show_ascii.lower() == 'true':
         display_ascii(condition, temp, sun_event, curr_wind, curr_hum, curr_precip)
 
-    elif SHOW_ASCII.lower() == 'false':
+    elif show_ascii.lower() == 'false':
         display_ascii(condition, temp, sun_event, curr_wind, curr_hum, curr_precip, False)
 
     else:
         display_ascii(condition, temp, sun_event, curr_wind, curr_hum, curr_precip) # fallback: display art
 
     # show date time config
-    if SHOW_DT.lower() == 'true':
+    if show_dt.lower() == 'true':
         print(f'\n{curr_date}  {curr_timezone}') # print local date + time
 
-    elif SHOW_DT.lower() == 'false':
+    elif show_dt.lower() == 'false':
         pass
 
     else:
@@ -185,20 +188,20 @@ def weather_function(city: str):  # enter a string, return true/false
         suggestion = 'have a great day today :]'
 
     # show emoji config
-    if SHOW_EMOJI.lower() == 'true':
-        msg_emoji = EMOJI_TYPE
-    elif SHOW_EMOJI.lower() == 'false':
+    if show_emoji.lower() == 'true':
+        msg_emoji = emoji_type
+    elif show_emoji.lower() == 'false':
         msg_emoji = ''
     else:
-        msg_emoji = EMOJI_TYPE
+        msg_emoji = emoji_type
 
     space = ' ' if msg_emoji else ''
 
     # label configs
-    if SHOW_MSG.lower() == 'true':
+    if show_msg.lower() == 'true':
         label(f'{msg_emoji}{space}msg', suggestion, Colors.custom_label, True)
 
-    elif SHOW_MSG.lower() == 'false':
+    elif show_msg.lower() == 'false':
         pass
     else:
         label(f'{weather_emoji} msg', suggestion, Colors.custom_label, True) # fallback: show message

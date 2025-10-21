@@ -1,4 +1,4 @@
-import sys
+
 from rich.console import Console
 from rich.rule import Rule
 
