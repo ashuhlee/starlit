@@ -2,9 +2,9 @@
 
 import os
 import argparse
-from ui.styles import label, Colors, Console, load_dotenv
-from core.weather_function import weather_function
-from interactive_mode import interactive_mode
+from .ui.styles import label, Colors, Console, load_dotenv
+from .core.weather_function import weather_function
+from .interactive_mode import interactive_mode
 
 load_dotenv()
 console = Console()

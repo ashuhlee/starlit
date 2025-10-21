@@ -2,9 +2,8 @@ import sys
 from rich.console import Console
 from rich.rule import Rule
 
-from ui.styles import label, Colors
-from ui.helpers import *
-
+from starlit.ui.styles import label, Colors
+from starlit.ui.helpers import *
 
 hide_cur = '\033[?25l'
 show_cur = '\033[?25h'

@@ -1,11 +1,10 @@
-
-from ui.helpers import *
-from ui.styles import Misc
+from starlit.ui.styles import Misc
+from starlit.ui.helpers import *
 
 load_dotenv()
 UNITS = os.getenv('UNITS', 'metric')
 
-condition_labels = {
+condition_labels: dict = {
     'Clouds': 'Cloudy',
     'Haze': 'Hazy',
     'Clear': 'Clear Sky',
@@ -15,7 +14,7 @@ condition_labels = {
     'Fog': 'Foggy'
 }
 
-default_ascii = [
+default_ascii: list = [
         r'',
         r'               {weather}',
         r'    .--.      {sun}',
@@ -24,7 +23,7 @@ default_ascii = [
         r'               {precip}',
 ]
 
-weather_ascii = {
+weather_ascii: dict = {
     'Clouds': [
         r'',
         r'               {weather}',
@@ -70,7 +69,7 @@ weather_ascii = {
     ]
 }
 
-no_ascii = [
+no_ascii: list = [
     r'',
     r'{weather}',
     r'{sun}',
@@ -144,7 +143,7 @@ weather_emoji: dict = {
 }
 
 # change condition names
-def better_conditions(condition: str):
+def better_conditions(condition: str) -> str:
 
     # return new condition, if it doesn't exist, return the default condition
     return condition_labels.get(condition, condition)

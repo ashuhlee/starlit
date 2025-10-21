@@ -1,5 +1,5 @@
 from datetime import datetime, timezone, timedelta
-from ui.styles import Misc
+from starlit.ui.styles import Misc
 
 
 def get_local_time(offset_seconds: int, return_dt: bool = False):

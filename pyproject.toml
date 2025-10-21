@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.scripts]
-starlit = "main:main"
+starlit = "starlit.main:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

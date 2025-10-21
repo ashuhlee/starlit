@@ -1,12 +1,12 @@
 
-from utils.system_utils import *
+from starlit.utils.system_utils import *
 
 from terminaltexteffects import Color
 from terminaltexteffects.effects.effect_print import Print
 
 
 # gradient text animation
-def text_effect(text: str, speed: int, colors: tuple = (color1_tte, color2_tte)):
+def text_effect(text: str, speed: int, colors: tuple = (color1_tte, color2_tte)) -> None:
 
     effect = Print(text)
 

@@ -1,9 +1,11 @@
-from ui.animations import *
-from ui.graphics import *
-from ui.styles import Colors, label, gradient_text
+from starlit.ui.animations import *
+from starlit.ui.graphics import *
 
-from core.timezone import *
-from core.wind_direction import wind_arrow
+from starlit.ui.styles import Colors, label, gradient_text
+from starlit.ui.helpers import *
+
+from starlit.core.timezone import *
+from starlit.core.wind_direction import wind_arrow
 
 load_dotenv()
 
@@ -83,6 +85,7 @@ def weather_function(city: str):  # enter a string, return true/false
 
     wind_speed: float = getWind.get('speed', 0.0)
 
+    # set unit types
     if UNITS.lower() == 'metric':
         wind_val: float = round(wind_speed * 3.6, 1)
         wind_unit = 'km/h'
@@ -93,17 +96,17 @@ def weather_function(city: str):  # enter a string, return true/false
 
     else:
         wind_val: float = round(wind_speed * 3.6, 1)
-        wind_unit = 'km/h' # defaults to metric
+        wind_unit = 'km/h' # fallback: metric
 
     # temperature + humidity
     getValue: dict = data['main']
 
     temp: float = getValue['temp']  # get temp (key) matching value
-    humidity: int = getValue['humidity']  # get hu
+    humidity: int = getValue['humidity']  # get humidity (key) matching value
 
     # get current precipitation
     precipitation: float = 0
-    precip_type: list[str] = []
+    precip_type: list = []
 
     if 'rain' in data:
         rain: float = data['rain'].get('1h', 0.0)
@@ -117,14 +120,13 @@ def weather_function(city: str):  # enter a string, return true/false
         precipitation: float = precipitation + snow
         precip_type.append('Snow')  # add snow to [] if snowy
 
-
+    # add matching emoji to location title
     if condition in weather_emoji:
         emoji: str = weather_emoji[condition]
     else:
         emoji: str = ''
 
     # show emoji config #1
-
     if SHOW_EMOJI.lower() == 'true':
         welcome_message: str = f'Forecast for {city}, {country_code} {emoji}\n'
 
@@ -132,10 +134,9 @@ def weather_function(city: str):  # enter a string, return true/false
         welcome_message: str = f'Forecast for {city}, {country_code}\n'
 
     else:
-        welcome_message: str = f'Forecast for {city}, {country_code} {emoji}\n' # print emoji by default
+        welcome_message: str = f'Forecast for {city}, {country_code} {emoji}\n' # fallback: show emoji
 
     # print welcome message
-
     if DISABLE_ANIMATION.lower() == 'true':
         time.sleep(0.2)
         gradient_text(welcome_message)
@@ -158,7 +159,6 @@ def weather_function(city: str):  # enter a string, return true/false
     curr_wind: str = f'wind     {Misc.divider}  {wind_val} {wind_unit} {wind_dir}'
 
     # show ascii configs
-
     if SHOW_ASCII.lower() == 'true':
         display_ascii(condition, temp, sun_event, curr_wind, curr_hum, curr_precip)
 
@@ -168,9 +168,7 @@ def weather_function(city: str):  # enter a string, return true/false
     else:
         display_ascii(condition, temp, sun_event, curr_wind, curr_hum, curr_precip) # fallback: display art
 
-
     # show date time config
-
     if SHOW_DT.lower() == 'true':
         print(f'\n{curr_date}  {curr_timezone}') # print local date + time
 
@@ -180,19 +178,19 @@ def weather_function(city: str):  # enter a string, return true/false
     else:
         print(f'\n{curr_date}  {curr_timezone}') # fallback: show date time
 
+    # display message at the bottom
     if condition in weather_msg:
         suggestion = random.choice(weather_msg[condition])
     else:
         suggestion = 'have a great day today :]'
 
     # show emoji config
-
     if SHOW_EMOJI.lower() == 'true':
         msg_emoji = EMOJI_TYPE
     elif SHOW_EMOJI.lower() == 'false':
         msg_emoji = ''
     else:
-        msg_emoji = '🐻'
+        msg_emoji = EMOJI_TYPE
 
     space = ' ' if msg_emoji else ''
 

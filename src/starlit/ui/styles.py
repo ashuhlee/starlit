@@ -2,7 +2,7 @@
 from rich.console import Console
 from rich_gradient import Gradient
 
-from ui.helpers import *
+from starlit.ui.helpers import *
 
 console = Console()
 load_dotenv()

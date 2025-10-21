@@ -1,4 +1,4 @@
-from core.weather_function import *
+from .core.weather_function import *
 
 def interactive_mode():
 
