@@ -2,9 +2,9 @@
 
 import os
 import argparse
-from .ui.styles import label, Colors, Console, load_dotenv
-from .core.weather_function import weather_function
-from .interactive_mode import interactive_mode
+from starlit.ui.styles import label, Colors, Console, load_dotenv
+from starlit.core.weather_function import weather_function
+from starlit.interactive_mode import interactive_mode
 
 load_dotenv()
 console = Console()
