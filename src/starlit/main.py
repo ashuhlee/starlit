@@ -9,20 +9,23 @@ from starlit.interactive_mode import interactive_mode
 load_dotenv()
 console = Console()
 
-api_key = os.getenv('API_KEY')
-default_city = os.getenv("DEFAULT_CITY", None)
+class AppConfig:
+    api_key = os.getenv('API_KEY')
+    default_city = os.getenv("DEFAULT_CITY", None)
 
-units = os.getenv('UNITS', 'Default')
-disable_anim = os.getenv('DISABLE_ANIMATION', 'Default')
-show_dt = os.getenv('SHOW_DT', 'Default')
-show_ascii = os.getenv('show_ascii', 'Default')
-show_msg = os.getenv('show_msg', 'Default')
-show_emoji = os.getenv('SHOW_EMOJI', 'Default')
-emoji_type = os.getenv('EMOJI_TYPE', 'Default')
+class Theme:
+    primary = os.getenv('COLOR_1', 'Default')
+    secondary = os.getenv('COLOR_2', 'Default')
+    label = os.getenv('LABEL_COLOR', 'Default')
 
-color_1 = os.getenv('COLOR_1', 'Default')
-color_2 = os.getenv('COLOR_2', 'Default')
-label_color = os.getenv('LABEL_COLOR', 'Default')
+class Settings:
+    units = os.getenv('UNITS', 'Default')
+    disable_anim = os.getenv('DISABLE_ANIMATION', 'Default')
+    show_dt = os.getenv('SHOW_DT', 'Default')
+    show_ascii = os.getenv('show_ascii', 'Default')
+    show_msg = os.getenv('show_msg', 'Default')
+    show_emoji = os.getenv('SHOW_EMOJI', 'Default')
+    emoji_type = os.getenv('EMOJI_TYPE', 'Default')
 
 version = "0.1.0"
 
@@ -102,29 +105,29 @@ def main():
             if not args.show_full:
 
                 print("API Settings:")
-                console.print(f"  └─ API Key: {"[green]Connected[/green]" if api_key and len(api_key.strip()) == api_key_length 
+                console.print(f"  └─ API Key: {"[green]Connected[/green]" if AppConfig.api_key and len(AppConfig.api_key.strip()) == api_key_length 
                 else '[red]Not Connected[/red]'}")
 
                 values = {"true": "Yes", "false": "No"}
                 anim = {"false": "Enabled", "true": "Disables"}
 
                 print("\nDisplay Settings:")
-                print(f"  ├─ Default City: {default_city.capitalize()}")
-                print(f"  ├─ Units: {units.capitalize()}")
-                print(f"  ├─ Animations: {anim.get(disable_anim.lower(), "Yes")}")
+                print(f"  ├─ Default City: {AppConfig.default_city.capitalize()}")
+                print(f"  ├─ Units: {Settings.units.capitalize()}")
+                print(f"  ├─ Animations: {anim.get(Settings.disable_anim.lower(), "Yes")}")
 
-                print(f"  ├─ Show Date & Time: {values.get(show_dt.lower(), "Yes")}")
-                print(f"  ├─ Show Ascii: {values.get(show_ascii.lower(), "Yes")}")
-                print(f"  ├─ Show Message: {values.get(show_msg.lower(), "Yes")}")
+                print(f"  ├─ Show Date & Time: {values.get(Settings.show_dt.lower(), "Yes")}")
+                print(f"  ├─ Show Ascii: {values.get(Settings.show_ascii.lower(), "Yes")}")
+                print(f"  ├─ Show Message: {values.get(Settings.show_msg.lower(), "Yes")}")
 
-                print(f"  ├─ Show Emojis: {values.get(show_emoji.lower(), "Yes")}")
-                print(f"  └─ Emoji Type: {emoji_type}")
+                print(f"  ├─ Show Emojis: {values.get(Settings.show_emoji.lower(), "Yes")}")
+                print(f"  └─ Emoji Type: {Settings.emoji_type}")
 
                 print("\nColor Settings:")
 
-                print(f"  ├─ Color 1: {color_1}")
-                print(f"  ├─ Color 2: {color_2}")
-                print(f"  └─ Label Color: {label_color}")
+                print(f"  ├─ Color 1: {Theme.primary}")
+                print(f"  ├─ Color 2: {Theme.secondary}")
+                print(f"  └─ Label Color: {Theme.label}")
 
                 console.print("\nTo show full contents of the .env file, append the flag [yellow]--show-full[/yellow]")
 
@@ -137,7 +140,7 @@ def main():
 
                         # hide api key in terminal
                         if strip.startswith("API_KEY="):
-                            if api_key and len(api_key.strip()) == api_key_length:
+                            if AppConfig.api_key and len(AppConfig.api_key.strip()) == api_key_length:
                                 console.print("API_KEY: [green]Connected[/green]\n")
                             else:
                                 console.print("API_KEY: [red]Not connected[/red].\n")
@@ -156,8 +159,8 @@ def main():
         return
 
     # use default city if no args provided
-    if default_city:
-        weather_function(default_city)
+    if AppConfig.default_city:
+        weather_function(AppConfig.default_city)
         return
 
     # fallback if no city is available
