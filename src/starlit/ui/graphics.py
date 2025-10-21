@@ -1,27 +1,6 @@
 from starlit.ui.styles import Misc
 from starlit.ui.helpers import *
 
-load_dotenv()
-UNITS = os.getenv('UNITS', 'metric')
-
-condition_labels: dict = {
-    'Clouds': 'Cloudy',
-    'Haze': 'Hazy',
-    'Clear': 'Clear Sky',
-    'Rain': 'Rainy',
-    'Snow': 'Snowy',
-    'Mist': 'Misty',
-    'Fog': 'Foggy'
-}
-
-default_ascii: list = [
-        r'',
-        r'               {weather}',
-        r'    .--.      {sun}',
-        r'  .-(    ).    {wind}',
-        r' (___.__)__)   {humidity}',
-        r'               {precip}',
-]
 
 weather_ascii: dict = {
     'Clouds': [
@@ -32,6 +11,7 @@ weather_ascii: dict = {
         r' (___.__)__)   {humidity}',
         r'               {precip}',
     ],
+
     'Rain': [
         r'',
         r'    .--.      {weather}',
@@ -66,8 +46,27 @@ weather_ascii: dict = {
         r' (___.__)__)   {wind}',
         r" . * . * .*    {humidity}",
         r'  ---------    {precip}',
-    ]
+    ],
+
+    'Fog': [
+        r"",
+        r"  . _ - _       {weather}",
+        r" _ - _ - _ -    {sun}",
+        r"  _ - _ - _     {wind}",
+        r" _ . _ - . -    {humidity}",
+        r"                {precip}",
+    ],
+
 }
+
+default_ascii: list = [
+        r'',
+        r'               {weather}',
+        r'    .--.      {sun}',
+        r'  .-(    ).    {wind}',
+        r' (___.__)__)   {humidity}',
+        r'               {precip}',
+]
 
 no_ascii: list = [
     r'',
@@ -141,6 +140,19 @@ weather_emoji: dict = {
     'Squall': '🌬️',
     'Tornado': '🌪️'
 }
+
+condition_labels: dict = {
+    'Clouds': 'Cloudy',
+    'Haze': 'Hazy',
+    'Clear': 'Clear Sky',
+    'Rain': 'Rainy',
+    'Snow': 'Snowy',
+    'Mist': 'Misty',
+    'Fog': 'Foggy'
+}
+
+load_dotenv()
+UNITS = os.getenv('UNITS', 'metric')
 
 # change condition names
 def better_conditions(condition: str) -> str:
