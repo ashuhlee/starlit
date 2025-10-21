@@ -19,20 +19,24 @@ def text_effect(text: str, speed: int, colors: tuple = (color1_tte, color2_tte))
 
 
 # spinning animation for loading data
-def spinner(text: str, duration: float, found: bool | None) -> None:
+def spinner(text: str, duration: float, found: bool | None, display: bool = True) -> None:
+
     print()
-    with console.status(f'[cyan]{text}[/cyan]', spinner='dots', spinner_style='magenta'):
-        # length of animation
-        time.sleep(duration)
 
-    if found:
-        print(hide_cur, end='', flush=True)
-        console.print('[green]󰄬 Data fetched successfully![/green]')
+    if display:
 
-        sys.stdout.write('\x1b[1A')  # move cursor up
-        time.sleep(0.25)
+        with console.status(f'[cyan]{text}[/cyan]', spinner='dots', spinner_style='magenta'):
+            # length of animation
+            time.sleep(duration)
 
-        # clear fetch success message
-        sys.stdout.write('\x1b[2K')  # clear line
-    else:
-        pass
+        if found:
+            print(hide_cur, end='', flush=True)
+            console.print('[green]󰄬 Data fetched successfully![/green]')
+
+            sys.stdout.write('\x1b[1A')  # move cursor up
+            time.sleep(0.25)
+
+            # clear fetch success message
+            sys.stdout.write('\x1b[2K')  # clear line
+        else:
+            pass
