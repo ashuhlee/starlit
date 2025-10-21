@@ -149,10 +149,10 @@ def better_conditions(condition: str):
     # return new condition, if it doesn't exist, return the default condition
     return condition_labels.get(condition, condition)
 
-def display_ascii(condition: str, temp: float, sun: str, wind: str, humidity: str, precip: str):
+def display_ascii(condition: str, temp: float, sun: str, wind: str, humidity: str, precip: str, show_ascii: bool = True):
 
     new_condition = better_conditions(condition)
-    ascii_art = weather_ascii.get(condition, default_ascii)
+    ascii_art = weather_ascii.get(condition, default_ascii) if show_ascii else no_ascii
 
     if UNITS.lower() == 'metric':
         temp_unit = '°C'
@@ -166,19 +166,3 @@ def display_ascii(condition: str, temp: float, sun: str, wind: str, humidity: st
     for line in ascii_art:
         print(line.format(weather = pretty_weather, sun = sun, wind = wind, humidity = humidity, precip = precip))
 
-def display_ascii_none(condition: str, temp: float, sun: str, wind: str, humidity: str, precip: str):
-
-    new_condition = better_conditions(condition)
-    ascii_art = no_ascii
-
-    if UNITS.lower() == 'metric':
-        temp_unit = '°C'
-    elif UNITS.lower() == 'imperial':
-        temp_unit = '°F'
-    else:
-        temp_unit = '°C' # defaults to metric
-
-    pretty_weather: str = f'weather  {Misc.divider}  {new_condition.lower()} ({round(temp, 1)}{temp_unit})'
-
-    for line in ascii_art:
-        print(line.format(weather = pretty_weather, sun = sun, wind = wind, humidity = humidity, precip = precip))

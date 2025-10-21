@@ -163,7 +163,7 @@ def weather_function(city: str):  # enter a string, return true/false
         display_ascii(condition, temp, sun_event, curr_wind, curr_hum, curr_precip)
 
     elif SHOW_ASCII.lower() == 'false':
-        display_ascii_none(condition, temp, sun_event, curr_wind, curr_hum, curr_precip)
+        display_ascii(condition, temp, sun_event, curr_wind, curr_hum, curr_precip, False)
 
     else:
         display_ascii(condition, temp, sun_event, curr_wind, curr_hum, curr_precip) # fallback: display art
