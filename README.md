@@ -1,9 +1,14 @@
+
+<div align="center">
+
 # starlit
-A minimal and customizable weather CLI written in Python
+A minimal and customizable weather CLI, written in Python 🐍
 
-
-![preview](assets/preview-1.png)
+![preview](assets/images/preview-1.png)
 Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
+
+</div>
+
 
 ## Requirements
 - Python 3.13+
@@ -45,51 +50,46 @@ Some packages are required for this project. They will automatically be installe
 ```zsh
 pip install .
 ```
-4. **Create your `.env` file**
+4. **Set up your `.env` file**
 
-Copy the example environment file by using this flag:
+Generate your configuration file from the example template:
 
 ```zsh
-# macOS / Linux / Windows
 starlit --setup
 ```
 
-> Get your API key from [OpenWeatherMap](https://openweathermap.org/api)
-> 
-
-## Configuration
-starlit uses a `.env` file to store user specified settings — things like your API key, default city, and how you want the app to look in your terminal.
-
-`API_KEY`: Your OpenWeatherMap API key
-
-### Open the .env file and paste your API key
+Then open it in your default editor
 ```zsh
-# macOS / Linux / Windows
-starlit --edit # Opens the .env file in your default editor
+starlit --edit
 ```
 
-### Customize default settings (optional)
+Get your [OpenWeatherMap API key](https://openweathermap.org/api) and paste it into the `.env` file under `API_KEY=`
 
-| Setting             | Default   | What it does                           |
-| ------------------- |-----------|----------------------------------------|
-| `DEFAULT_CITY`      | `Seattle` | The city shown when you don’t pass one |
-| `UNITS`             | `metric`  | Use `metric` (°C) or `imperial` (°F)   |
-| `DISABLE_ANIMATION` | `false`   | Turns off the title animation          |
-| `SHOW_DT`           | `true`    | Shows local date and time              |
-| `SHOW_ASCII`        | `true`    | Shows the little ASCII art to the left |
-| `SHOW_MSG`          | `true`    | Adds a cute message at the bottom      |
-| `SHOW_EMOJI`        | `true`    | Shows emojis in your terminal          |
-| `EMOJI_TYPE`        | `🐻`      | Choose a cute emoji for messages       |
+## Configuration
+starlit uses a `.env` file to store your API key, default city, and display preferences
 
-### Customize colors (optional)
+| Setting             | Description                               |
+|---------------------|-------------------------------------------|
+| `API_KEY`           | Your OpenWeatherMap API key               |
+| `DEFAULT_CITY`      | The city shown when you don’t pass one    |
+| `UNITS`             | Options: `metric` (°C) or `imperial` (°F) |
+| `DISABLE_ANIMATION` | Turns off all animations in starlit       |
+| `SHOW_DT`           | Shows local date and time                 |
+| `SHOW_ASCII`        | Shows the little ASCII art to the left    |
+| `SHOW_MSG`          | Adds a cute message at the bottom         |
+| `SHOW_EMOJI`        | Shows emojis in your terminal             |
+| `EMOJI_TYPE`        | Choose a cute emoji for messages          |
+
+
+### (Optional) Customize colors
 You can also set your own colors for the gradient title and message labels.
 Use **six-digit** RGB hex codes (no # needed):
 
-```
-COLOR_1=ffb6c1     # Gradient color stop 1
-COLOR_2=9370db     # Gradient color stop 2
-LABEL_COLOR=ffd700 # Color for the message label
-```
+| Setting     | Description           | Example                                                         |
+|-------------|-----------------------|-----------------------------------------------------------------|
+| COLOR_1     | Gradient color stop 1 | <img src="assets/colors/1.png" alt="color1" width="10"/> 5D63FF |
+| COLOR_2     | Gradient color stop 2 | <img src="assets/colors/2.png" alt="color1" width="10"/> F7A4F4 |
+| LABEL_COLOR | Message label color   | <img src="assets/colors/3.png" alt="color1" width="10"/> 5CE7F9 |
 
 ## Usage
 
