@@ -22,6 +22,7 @@ class Colors:
 
     red = '#FF5F87'
     orange = '#F09564'
+    green = '#76e39a'
     white = '#FFFFFF'
 
     CUSTOM_LABEL = os.getenv('LABEL_COLOR', dark_pink)  # defaults to dark pink
