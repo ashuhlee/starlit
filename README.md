@@ -9,7 +9,7 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 - Python 3.13+
 - pip package manager
 - An [OpenWeatherMap](https://openweathermap.org) API key
-- utf-8 terminal with 256 colors and nerd font
+- UTF-8 terminal with 256 colors and nerd font
 
 ## Installation
 1. **Clone this repository**
@@ -47,23 +47,26 @@ pip install .
 ```
 4. **Create your `.env` file**
 
-Copy the example environment file:
+Copy the example environment file by using this flag:
 
 ```zsh
-# macOS / Linux
-cp .env.example .env
+# macOS / Linux / Windows
+starlit --setup
 ```
-```zsh
-# Windows (Command Prompt)
-copy .env.example .env
-```
+
 > Get your API key from [OpenWeatherMap](https://openweathermap.org/api)
 > 
 
 ## Configuration
-starlit uses a simple `.env` file to store your settings — things like your API key, default city, and how you want the app to look in your terminal.
+starlit uses a `.env` file to store user specified settings — things like your API key, default city, and how you want the app to look in your terminal.
 
 `API_KEY`: Your OpenWeatherMap API key
+
+### Open the .env file and paste your API key
+```zsh
+# macOS / Linux / Windows
+starlit --edit # Opens the .env file in your default editor
+```
 
 ### Customize default settings (optional)
 
