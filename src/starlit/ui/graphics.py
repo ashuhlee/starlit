@@ -3,49 +3,50 @@ from starlit.ui.helpers import *
 
 
 weather_ascii: dict = {
+
     'Clouds': [
-        r'',
-        r'               {weather}',
-        r'    .--.      {sun}',
-        r'  .-(    ).    {wind}',
-        r' (___.__)__)   {humidity}',
-        r'               {precip}',
+        r"",
+        r"               {weather}",
+        r"    .--.      {sun}",
+        r"  .-(    ).    {wind}",
+        r" (___.__)__)   {humidity}",
+        r"               {precip}",
     ],
 
     'Rain': [
-        r'',
-        r'    .--.      {weather}',
-        r'  .-(    ).    {sun}',
-        r' (___.__)__)   {wind}',
+        r"",
+        r"    .--.      {weather}",
+        r"  .-(    ).    {sun}",
+        r" (___.__)__)   {wind}",
         r"  ‚'‚'‚'‚'     {humidity}",
-        r'               {precip}',
+        r"               {precip}",
     ],
 
     'Drizzle': [
-        r'',
-        r'    .--.      {weather}',
-        r'  .-(    ).    {sun}',
-        r' (___.__)__)   {wind}',
+        r"",
+        r"    .--.      {weather}",
+        r"  .-(    ).    {sun}",
+        r" (___.__)__)   {wind}",
         r"   ' ' ' '     {humidity}",
-        r'               {precip}',
+        r"               {precip}",
     ],
 
     'Thunderstorm': [
-        r'',
-        r'    .--.      {weather}',
-        r'  .-(    ).    {sun}',
-        r' (___.__)__)   {wind}',
-        r"  , , 󱐋 , ,    {humidity}",
-        r'               {precip}',
+        r"",
+        r"    .--.      {weather}",
+        r"  .-(    ).    {sun}",
+        r" (___.__)__)   {wind}",
+        r" ,',' 󱐋 ,','   {humidity}",
+        r"               {precip}",
     ],
 
     'Snow': [
-        r'',
-        r'  .+ .--.      {weather}',
-        r'  .-(    ).    {sun}',
-        r' (___.__)__)   {wind}',
+        r"",
+        r"  .+ .--.      {weather}",
+        r"  .-(    ).    {sun}",
+        r" (___.__)__)   {wind}",
         r" . * . * .*    {humidity}",
-        r'  ---------    {precip}',
+        r"  ---------    {precip}",
     ],
 
     'Fog': [
@@ -57,15 +58,42 @@ weather_ascii: dict = {
         r"                {precip}",
     ],
 
+    'Mist': [
+        r"",
+        r"  . _ - _ .     {weather}",
+        r" _ - _ . _ -    {sun}",
+        r"  _ - _ - _     {wind}",
+        r" _ . _ - . -    {humidity}",
+        r"                {precip}",
+    ],
+
+    'Haze': [
+        r"",
+        r"  . _ - _ .     {weather}",
+        r" _ - .--. -     {sun}",
+        r"_ .-(    ).-    {wind}",
+        r" (___.__)__)    {humidity}",
+        r"                {precip}",
+    ],
+
+    'Clear': [
+        r"",
+        r"    ⸜    ⸝     {weather}",
+        r"    .—.       {sun}",
+        r"  ‒ (   ) ‒    {wind}",
+        r"     `—᾿       {humidity}",
+        r"    ⸍    ⸌     {precip}",
+    ],
+
 }
 
 default_ascii: list = [
-        r'',
-        r'               {weather}',
-        r'    .--.      {sun}',
-        r'  .-(    ).    {wind}',
-        r' (___.__)__)   {humidity}',
-        r'               {precip}',
+        r"",
+        r"               {weather}",
+        r"    .--.      {sun}",
+        r"  .-(    ).    {wind}",
+        r" (___.__)__)   {humidity}",
+        r"               {precip}",
 ]
 
 no_ascii: list = [
@@ -99,8 +127,7 @@ weather_msg: dict = {
               'hope you have a great day!'],
 
     'Clouds': ['a chill playlist kinda day',
-               "aw, where's the sun?",
-               'no chance of meatballs :]'],
+               "aw, where's the sun?"],
 
     'Mist': ['feels kind of dreamy'],
 
