@@ -4,7 +4,7 @@
 # starlit
 A minimal and customizable weather CLI, written in Python 🐍
 
-![preview](assets/images/banner/preview.png)
+![preview](assets/images/cover.png)
 Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
 
 </div>
@@ -84,11 +84,11 @@ starlit uses a `.env` file to store your API key, default city, and display pref
 You can also set your own colors for the gradient title and message labels.
 Use **six-digit** RGB hex codes (no # needed):
 
-| Setting     | Description           | Example                                                         |
-|-------------|-----------------------|-----------------------------------------------------------------|
-| COLOR_1     | Gradient color stop 1 | <img src="assets/colors/1.png" alt="color1" width="10"/> 5D63FF |
-| COLOR_2     | Gradient color stop 2 | <img src="assets/colors/2.png" alt="color1" width="10"/> F7A4F4 |
-| LABEL_COLOR | Message label color   | <img src="assets/colors/3.png" alt="color1" width="10"/> 5CE7F9 |
+| Setting     | Description           | Example                                                                |
+|-------------|-----------------------|------------------------------------------------------------------------|
+| COLOR_1     | Gradient color stop 1 | <img src="assets/images/colors/1.png" alt="color1" width="10"/> 5D63FF |
+| COLOR_2     | Gradient color stop 2 | <img src="assets/images/colors/2.png" alt="color1" width="10"/> F7A4F4 |
+| LABEL_COLOR | Message label color   | <img src="assets/images/colors/3.png" alt="color1" width="10"/> 5CE7F9 |
 
 ## Usage
 
@@ -97,7 +97,7 @@ Use **six-digit** RGB hex codes (no # needed):
 starlit
 
 # specify city via command line
-starlit tokyo
+starlit seattle
 
 # start interactive mode
 starlit --interactive 
