@@ -4,11 +4,10 @@
 # starlit
 A minimal and customizable weather CLI, written in Python 🐍
 
-![preview](assets/images/preview-1.png)
+![preview](assets/images/banner/preview.png)
 Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
 
 </div>
-
 
 ## Requirements
 - Python 3.13+
