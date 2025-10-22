@@ -118,6 +118,14 @@ starlit --version
 starlit --help
 ```
 
+## Usage examples
+
+| ![preview-1](assets/images/previews/preview-1.png) | ![preview-2](assets/images/previews/preview-2.png) |
+|----------------------------------------------------|----------------------------------------------------|
+| ![preview-3](assets/images/previews/preview-3.png) | ![preview-4](assets/images/previews/preview-4.png) |
+| ![preview-5](assets/images/previews/preview-5.png) | ![preview-6](assets/images/previews/preview-6.png) |
+
+
 ## Tech stack
 
 - **[Rich](https://github.com/Textualize/rich)** - Beautiful terminal formatting
@@ -130,6 +138,6 @@ starlit --help
 ## About this project
 I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It grew into a CLI project I'm proud of!
 
-This project is an active work in progress. Thank you to [charm](https://github.com/charmbracelet) for the color palette inspo 🎨 and to [wego](https://github.com/schachmat/wego/tree/master) for the ASCII icons
+Thank you to [charm](https://github.com/charmbracelet) for the color palette inspo 🎨 and to [wego](https://github.com/schachmat/wego/tree/master) for the ASCII icons
 
 ⭐ If you like this project, please consider giving it a star!
