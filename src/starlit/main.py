@@ -1,6 +1,6 @@
-# this file handles all the flags
 
 import os
+import shutil
 import argparse
 from starlit.ui.styles import label, Colors, Console, load_dotenv
 from starlit.core.weather_function import weather_function
@@ -35,9 +35,15 @@ def main():
         description="A minimal, cute and customizable weather cli. ☁️",
     )
 
-    # optional positional argument for city (default if none)
-    parser.add_argument("city", nargs="?",
+    # optional pos argument for city (default if none)
+    parser.add_argument("city", nargs="*",
         help="City name to fetch weather for"
+    )
+
+    # copy .env.example to new .env file
+    parser.add_argument("--setup",
+        action="store_true",
+        help="Create a .env file from .env.example"
     )
 
     # runs interactive mode
@@ -70,17 +76,43 @@ def main():
 
     args = parser.parse_args()
 
+    # copies .env.example to new .env file
+    if args.setup:
+
+        example_path = os.path.join(os.path.dirname(__file__), ".env.example")
+        target_path = os.path.join(os.getcwd(), ".env")
+
+        if os.path.exists(target_path):
+            label('ERROR','.env file already exists', Colors.red, True)
+
+        elif os.path.exists(example_path):
+            shutil.copy(example_path, target_path)
+            label('SUCCESS', 'Copied .env.example to .env successfully!', Colors.green, True)
+
+        else:
+            label('ERROR','.env.example file not found in package directory', Colors.red, True)
+
+        return
+
+
     # open config file in default editor
     if args.edit:
         env_path = ".env"
 
         if os.path.exists(env_path):
-            editor = os.getenv("EDITOR", "nano")
+            editor = os.getenv("EDITOR")
+
+            if not editor:
+                # windows operating system
+                if os.name == "nt":
+                    editor = "notepad"
+                # unix operating system
+                else:
+                    editor = "nano"
+
             os.system(f"{editor} {env_path}")
         else:
-            label('ERROR',
-                  'No .env file found to edit',
-                  Colors.red, True)
+            label('ERROR', 'No .env file found to edit', Colors.red, True)
         return
 
     # print version
@@ -155,7 +187,8 @@ def main():
 
     # handle city argument
     if args.city:
-        weather_function(args.city)
+        city_name = " ".join(args.city)
+        weather_function(city_name)
         return
 
     # use default city if no args provided
