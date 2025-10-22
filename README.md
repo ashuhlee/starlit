@@ -57,6 +57,12 @@ Generate your configuration file from the example template:
 starlit --setup
 ```
 
+Alternatively, you can manually copy the .env.example file:
+
+```zsh
+cp .env.example .env
+```
+
 Then open it in your default editor
 ```zsh
 starlit --edit
