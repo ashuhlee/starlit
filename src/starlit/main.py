@@ -79,7 +79,10 @@ def main():
     # copies .env.example to new .env file
     if args.setup:
 
-        example_path = os.path.join(os.path.dirname(__file__), ".env.example")
+        # go up 3 directories
+        example_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+            ".env.example")
         target_path = os.path.join(os.getcwd(), ".env")
 
         if os.path.exists(target_path):
