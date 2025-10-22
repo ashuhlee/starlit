@@ -30,18 +30,18 @@ Do this if you'd like starlit dependencies clean and separate from other Python 
 Create the virtual environment:
 ```zsh
 # macOS / Linux / Windows
-python -m venv venv
+python -m venv .venv
 ```
 
 Activate the virtual environment:
 ```zsh
 # macOS / Linux
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 ```zsh
-# Windows (Command Prompt)
-venv\Scripts\activate.bat
+# Windows (Powershell)
+.venv\Scripts\Activate
 ```
 
 3. **Install dependencies**
@@ -93,7 +93,7 @@ Use **six-digit** RGB hex codes (no # needed):
 
 ## Usage
 
-```
+```zsh
 # basic usage
 starlit
 
