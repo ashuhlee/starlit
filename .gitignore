@@ -2,11 +2,10 @@
 .DS_Store
 
 # Python cache
-__pycache__/
+__pycache__
 
 # IDE settings
-.idea/
-.vscode/
+.idea
 
 # Virtual environment
 .venv
@@ -15,8 +14,9 @@ __pycache__/
 .env
 
 # Packaging
-*.egg-info/
+*.egg-info
 build
+dist
 
 # Testing
 tests

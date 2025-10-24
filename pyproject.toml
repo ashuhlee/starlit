@@ -1,24 +1,22 @@
-[build-system]
-requires = ["setuptools>=80.9.0"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "starlit"
 version = "0.1.0"
 description = "A minimal, cute and customizable weather cli"
-dependencies = [
-    "python-dotenv",
-    "requests",
-    "rich",
-    "terminaltexteffects",
-    "rich-gradient",
-]
+authors = ["ashuhlee"]
+readme = "README.md"
+packages = [{ include = "starlit", from = "src" }]
 
-[project.scripts]
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+python-dotenv = "*"
+requests = "*"
+rich = "*"
+terminaltexteffects = "*"
+rich-gradient = "*"
+
+[tool.poetry.scripts]
 starlit = "starlit.main:main"
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
