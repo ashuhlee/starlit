@@ -8,10 +8,10 @@ A minimal and customizable weather CLI, written in Python 🐍
 Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
 
 
-![GitHub Repo stars](https://img.shields.io/github/stars/ashuhlee/starlit?style=for-the-badge&logo=starship&logoColor=%23D7E0ED&labelColor=%232F2D42&color=%23F1C0E8)
-![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ashuhlee/starlit?style=for-the-badge&logo=gitbook&logoColor=%23D9E0EE&labelColor=%232F2D42&color=FAD4D3)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ashuhlee/starlit?style=for-the-badge&logo=github&logoColor=%23D9E0EE&labelColor=%232F2D42&color=c7cbff)
-![GitHub repo size](https://img.shields.io/github/repo-size/ashuhlee/starlit?style=for-the-badge&logo=removedotbg&logoColor=%23D9E0EE&labelColor=%232F2D42&color=B5E3EC)
+![GitHub Repo stars](https://img.shields.io/github/stars/ashuhlee/starlit?style=for-the-badge&logo=starship&logoColor=%23D7E0ED&labelColor=%232F2D42&color=%23FFBDF2)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ashuhlee/starlit?style=for-the-badge&logo=gitbook&logoColor=%23D9E0EE&labelColor=%232F2D42&color=FFD0CF)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ashuhlee/starlit?style=for-the-badge&logo=github&logoColor=%23D9E0EE&labelColor=%232F2D42&color=BBC0FF)
+![GitHub repo size](https://img.shields.io/github/repo-size/ashuhlee/starlit?style=for-the-badge&logo=removedotbg&logoColor=%23D9E0EE&labelColor=%232F2D42&color=AEE5FF)
 
 
 </div>
