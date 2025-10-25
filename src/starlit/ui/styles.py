@@ -1,3 +1,4 @@
+import sys
 
 from rich.console import Console
 from rich_gradient import Gradient
@@ -20,9 +21,9 @@ class Colors:
     dark_pink = 'F06EE6'
     dark_pink_2 = '#F06EE6'
 
-    red = '#FF5F87'
+    red = '#FF448A'
     orange = '#F09564'
-    green = '#76e39a'
+    green = '#61CF86'
     white = '#FFFFFF'
 
     CUSTOM_LABEL = os.getenv('LABEL_COLOR', dark_pink)  # defaults to dark pink
@@ -32,12 +33,11 @@ class Colors:
 # show label to left of text
 def label(tag: str, text: str, color: str, newline: bool):
     tag = tag.upper()
-    if newline:
-        console.print(
-            f'\n[bold {Colors.white} on {color}] {tag} [/bold {Colors.white} on {color}] {text}')
-    else:
-        console.print(
-            f'[bold {Colors.white} on {color}] {tag} [/bold {Colors.white} on {color}] {text}')
+
+    console.print(f'{'\n' if newline else ''}[bold {Colors.white} on {color}] {tag} [/bold {Colors.white} on {color}] {text}')
+
+    if tag == 'ERROR':
+        sys.exit(1)
 
 def gradient_text(text: str):
 
