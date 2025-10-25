@@ -165,6 +165,10 @@ starlit --help
 | ![preview-5](assets/images/previews/preview-5.png) | ![preview-6](assets/images/previews/preview-6.png) |
 
 
+## What's next
+* 🎨 **Color Themes:** Support for `.json` theme files so you can easily switch between color palettes
+* 🌍 **Multi-language Support:** Option to view weather info in different languages
+
 ## Tech stack
 
 - **[Rich](https://github.com/Textualize/rich)** - Beautiful terminal formatting
