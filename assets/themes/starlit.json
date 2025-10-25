@@ -1,0 +1,9 @@
+{
+  "name": "Starlit",
+  "description": "The default theme used for starlit",
+  "colors": {
+    "COLOR_1": "F06EE6",
+    "COLOR_2": "7571F9",
+    "LABEL_COLOR": "F7A4F4"
+  }
+}
