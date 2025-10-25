@@ -27,7 +27,7 @@ cd starlit
 
 2. **Create a virtual environment (optional)**
 
-Do this if you'd like starlit dependencies clean and separate from other Python projects
+Do this if you'd like to keep starlit’s dependencies clean and separate from other Python projects.
 
 Create the virtual environment:
 ```zsh

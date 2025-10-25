@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "A minimal, cute and customizable weather cli"
 authors = ["ashuhlee"]
 readme = "README.md"
+homepage = "https://github.com/ashuhlee/starlit"
+repository = "https://github.com/ashuhlee/starlit"
+
 packages = [{ include = "starlit", from = "src" }]
 
 [tool.poetry.dependencies]
