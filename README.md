@@ -11,11 +11,14 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 
 ## Requirements
 - Python 3.13+
-- pip package manager
+- Poetry or pip package manager
 - An [OpenWeatherMap](https://openweathermap.org) API key
 - UTF-8 terminal with 256 colors and nerd font
 
 ## Installation
+You can install starlit with pip or the [Poetry](https://python-poetry.org/docs/) package manager, depending on your preferred workflow.
+
+### Install with pip
 1. **Clone this repository**
 ```zsh
 git clone https://github.com/ashuhlee/starlit.git
@@ -63,7 +66,37 @@ Alternatively, you can manually copy the .env.example file:
 cp .env.example .env
 ```
 
-Then open it in your default editor
+Then open it in your default editor:
+```zsh
+starlit --edit
+```
+
+### Install with Poetry
+
+1. **Clone this repository**
+```zsh
+git clone https://github.com/ashuhlee/starlit.git
+cd starlit
+```
+
+2. **Install dependencies**
+
+Install project dependencies and set up a virtual environment automatically:
+```zsh
+poetry install
+# run the command that prints out when you run:
+poetry env activate
+```
+
+3. **Set up your `.env` file**
+
+Generate your configuration file from the example template:
+
+```zsh
+starlit --setup
+```
+
+Then open it in your default editor:
 ```zsh
 starlit --edit
 ```
