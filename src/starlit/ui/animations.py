@@ -21,9 +21,8 @@ def text_effect(text: str, speed: int, colors: tuple = (color1_tte, color2_tte))
 # spinning animation for loading data
 def spinner(text: str, duration: float, found: bool | None, display: bool = True) -> None:
 
-    print()
-
     if display:
+        print()
 
         with console.status(f'[cyan]{text}[/cyan]', spinner='dots', spinner_style='magenta'):
             # length of animation
