@@ -5,13 +5,11 @@ from starlit.ui.styles import Colors, label, gradient_text
 from starlit.ui.animations import spinner, text_effect
 from starlit.ui.graphics import weather_msg, weather_emoji, display_ascii
 
-
 from starlit.core.timezone import *
 from starlit.core.wind_direction import wind_arrow
 
 from starlit.utils.system_utils import print_warnings
 
-load_dotenv()
 
 api_key = os.getenv('API_KEY')
 units = os.getenv('UNITS', 'metric')
@@ -38,7 +36,7 @@ def weather_function(city: str):  # enter a string, return true/false
     data: dict = response.json()
 
     fetch_end: float = time.perf_counter() - fetch_start
-    process_time: float = max(fetch_end, 0.25)
+    process_time: float = max(fetch_end, 0.2)
 
     # get response code
     get_code: int = int(data.get('cod', 0))
@@ -209,4 +207,5 @@ def weather_function(city: str):  # enter a string, return true/false
         label(f'{weather_emoji} msg', suggestion, Colors.custom_label, True) # fallback: show message
 
     print_warnings()
+    # label('TEST', f'fetched in [cyan]{round((fetch_end * 1000), 2)}ms[/cyan]', Colors.title, True)
     return True  # city found
