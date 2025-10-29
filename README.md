@@ -4,7 +4,7 @@
 # starlit
 A minimal and customizable weather CLI, written in Python 🐍
 
-![preview](assets/images/cover.png)
+![preview](https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/cover.png)
 Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
 
 
@@ -25,18 +25,29 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 ## Installation
 You can install starlit with pip or the [Poetry](https://python-poetry.org/docs/) package manager, depending on your preferred workflow.
 
-### Install with pip
+### Option 1: Install from PyPI
+
+The easiest way to install starlit is via pip:
+```zsh
+pip install starlit-cli
+```
+
+Then set up your configuration:
+```zsh
+starlit --setup # creates ~/.config/starlit/.env
+starlit --edit  # opens .env file (add your api key here) 
+```
+
+### Option 2: Install from source
+
+For local development, contributing, or if you want an isolated installation:
+
 1. **Clone this repository**
 ```zsh
 git clone https://github.com/ashuhlee/starlit.git
 cd starlit
 ```
-
-2. **Create a virtual environment (optional)**
-
-Do this if you'd like to keep starlit’s dependencies clean and separate from other Python projects.
-
-Create the virtual environment:
+2. **Create the virtual environment**
 ```zsh
 # macOS / Linux / Windows
 python -m venv .venv
@@ -44,13 +55,8 @@ python -m venv .venv
 
 Activate the virtual environment:
 ```zsh
-# macOS / Linux
-source .venv/bin/activate
-```
-
-```zsh
-# Windows (Powershell)
-.venv\Scripts\Activate
+source .venv/bin/activate # macOS / Linux
+.venv\Scripts\Activate    # Windows (Powershell)
 ```
 
 3. **Install dependencies**
@@ -61,57 +67,21 @@ pip install .
 ```
 4. **Set up your `.env` file**
 
-Generate your configuration file from the example template:
+Generate a configuration file from the example template and open the file:
 
 ```zsh
 starlit --setup
-```
-
-Alternatively, you can manually copy the .env.example file:
-
-```zsh
-cp .env.example .env
-```
-
-Then open it in your default editor:
-```zsh
-starlit --edit
-```
-
-### Install with Poetry
-
-1. **Clone this repository**
-```zsh
-git clone https://github.com/ashuhlee/starlit.git
-cd starlit
-```
-
-2. **Install dependencies**
-
-Install project dependencies and set up a virtual environment automatically:
-```zsh
-poetry install
-# run the command that prints out when you run:
-poetry env activate
-```
-
-3. **Set up your `.env` file**
-
-Generate your configuration file from the example template:
-
-```zsh
-starlit --setup
-```
-
-Then open it in your default editor:
-```zsh
 starlit --edit
 ```
 
 Get your [OpenWeatherMap API key](https://openweathermap.org/api) and paste it into the `.env` file under `API_KEY=`
 
 ## Configuration
-starlit uses a `.env` file to store your API key, default city, and display preferences
+`starlit` creates a default configuration file when you run `starlit --setup`. The `.env` file stores your API key, default city and display preferences.
+
+- Linux/macOS: `~/.config/starlit/.env`
+- Windows: `C:\users\username\.config\starlit\.env`
+
 
 | Setting             | Description                               |
 |---------------------|-------------------------------------------|
@@ -166,15 +136,17 @@ starlit --help
 
 ## Usage examples
 
-| ![preview-1](assets/images/previews/preview-1.png) | ![preview-2](assets/images/previews/preview-2.png) |
-|----------------------------------------------------|----------------------------------------------------|
-| ![preview-3](assets/images/previews/preview-3.png) | ![preview-4](assets/images/previews/preview-4.png) |
-| ![preview-5](assets/images/previews/preview-5.png) | ![preview-6](assets/images/previews/preview-6.png) |
+| ![preview-1](https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-1.png) | ![preview-2](https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-2.png) |
+|------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| ![preview-3](https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-3.png) | ![preview-4](https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-4.png) |
+| ![preview-5](https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-5.png) | ![preview-6](https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-6.png) |
 
 
 ## What's next
-* 🎨 **Color Themes:** Support for `.json` theme files so you can easily switch between color palettes
-* 🌍 **Multi-language Support:** Option to view weather info in different languages
+- 🕐 **Different Modes:** Add live updates or full forecast modes
+- ✨ **Interactive Mode+:** Add a full command line interface when using `starlit -i`
+- 🎨 **Color Themes:** Support for `.json` theme files so you can easily switch between color palettes
+- 🌍 **Multi-language Support:** Option to view weather info in different languages
 
 ## Tech stack
 
