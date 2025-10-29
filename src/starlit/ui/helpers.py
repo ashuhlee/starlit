@@ -1,11 +1,15 @@
 import random
 import time
 import requests
-from typing import Any
 import sys
 import re
 import os
 from dotenv import load_dotenv
+from pathlib import Path
+
+
+env_file = Path.home() / ".config" / "starlit" / ".env"
+load_dotenv(env_file)
 
 # check if string color is a valid hex code
 def is_valid_hex(color: str) -> bool:
@@ -18,8 +22,6 @@ def make_valid_hex(color: str, default: str):
     else:
         return f'#{default}'
 
-
-load_dotenv()
 
 DEFAULT_1_TTE = '7571F9'
 DEFAULT_2_TTE = 'F7A4F4'
