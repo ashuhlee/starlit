@@ -23,7 +23,7 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 - UTF-8 terminal with 256 colors and nerd font
 
 ## Installation
-You can install starlit with pip or the [Poetry](https://python-poetry.org/docs/) package manager, depending on your preferred workflow.
+Installing starlit is quick and easy. The built-in setup command guides you through configuration.
 
 ### Option 1: Install from PyPI
 
