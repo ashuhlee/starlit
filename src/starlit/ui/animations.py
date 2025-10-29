@@ -25,8 +25,7 @@ def spinner(text: str, duration: float, found: bool | None, display: bool = True
         print()
 
         with console.status(f'[cyan]{text}[/cyan]', spinner='dots', spinner_style='magenta'):
-            # length of animation
-            time.sleep(duration)
+            time.sleep(duration) # length of animation
 
         if found:
             print(hide_cur, end='', flush=True)
@@ -35,7 +34,6 @@ def spinner(text: str, duration: float, found: bool | None, display: bool = True
             sys.stdout.write('\x1b[1A')  # move cursor up
             time.sleep(0.25)
 
-            # clear fetch success message
-            sys.stdout.write('\x1b[2K')  # clear line
+            sys.stdout.write('\x1b[2K')  # clears line
         else:
             pass
