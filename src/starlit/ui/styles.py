@@ -6,7 +6,6 @@ from rich_gradient import Gradient
 from starlit.ui.helpers import *
 
 console = Console()
-load_dotenv()
 
 class Colors:
 
@@ -23,7 +22,7 @@ class Colors:
 
     red = '#FF448A'
     orange = '#F09564'
-    green = '#61CF86'
+    green = '#32A852'
     white = '#FFFFFF'
 
     CUSTOM_LABEL = os.getenv('LABEL_COLOR', dark_pink)  # defaults to dark pink
