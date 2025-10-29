@@ -1,5 +1,5 @@
-from .core.weather_function import *
-from .utils.system_utils import console, clear_screen, force_quit, exit_app
+from starlit.core.weather_function import *
+from starlit.utils.system_utils import console, clear_screen, force_quit, exit_app
 
 def interactive_mode():
 
