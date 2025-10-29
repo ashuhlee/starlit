@@ -178,7 +178,7 @@ condition_labels: dict = {
     'Fog': 'Foggy'
 }
 
-load_dotenv()
+
 UNITS = os.getenv('UNITS', 'metric')
 
 # change condition names
