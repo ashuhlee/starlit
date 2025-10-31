@@ -15,7 +15,10 @@ class Colors:
     # hex codes
     title = '#7571F9'
     purple = '#9598f7'
+    aqua = '#7AD4F5'
     pink = '#F785EE'
+
+    light_pink = '#F7A1FF'
 
     dark_pink = 'F06EE6'
     dark_pink_2 = '#F06EE6'
