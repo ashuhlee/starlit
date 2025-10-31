@@ -60,7 +60,8 @@ if not is_valid_hex(color2_tte):
 def exit_app():
 
     print(hide_cur)
-    label('exit', 'Exiting interactive mode', Colors.title, False)
+    clear_screen()
+    label('exit', 'Exited interactive mode', Colors.title, False)
 
     print(show_cur, end='', flush=True)
     sys.exit(0)
