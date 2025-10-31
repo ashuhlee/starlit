@@ -10,7 +10,7 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/ashuhlee/starlit?style=for-the-badge&logo=starship&logoColor=%23D7E0ED&labelColor=%232F2D42&color=%23FFBDF2)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ashuhlee/starlit?style=for-the-badge&logo=gitbook&logoColor=%23D9E0EE&labelColor=%232F2D42&color=FFD0CF)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ashuhlee/starlit?style=for-the-badge&logo=github&logoColor=%23D9E0EE&labelColor=%232F2D42&color=BBC0FF)
+![GitHub commit activity](https://img.shields.io/github/v/release/ashuhlee/starlit?style=for-the-badge&logo=github&logoColor=%23D9E0EE&labelColor=%232F2D42&color=BBC0FF&label=version)
 ![GitHub repo size](https://img.shields.io/github/repo-size/ashuhlee/starlit?style=for-the-badge&logo=removedotbg&logoColor=%23D9E0EE&labelColor=%232F2D42&color=AEE5FF)
 
 
@@ -96,15 +96,15 @@ Get your [OpenWeatherMap API key](https://openweathermap.org/api) and paste it i
 | `EMOJI_TYPE`        | Choose a cute emoji for messages          |
 
 
-### (Optional) Customize colors
+### Customize colors
 You can also set your own colors for the gradient title and message labels.
 Use **six-digit** RGB hex codes (no # needed):
 
-| Setting     | Description           | Example                                                                |
-|-------------|-----------------------|------------------------------------------------------------------------|
-| COLOR_1     | Gradient color stop 1 | <img src="assets/images/colors/1.png" alt="color1" width="10"/> 5D63FF |
-| COLOR_2     | Gradient color stop 2 | <img src="assets/images/colors/2.png" alt="color1" width="10"/> F7A4F4 |
-| LABEL_COLOR | Message label color   | <img src="assets/images/colors/3.png" alt="color1" width="10"/> 5CE7F9 |
+| Setting     | Description           | Example                                                                                                                        |
+|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| COLOR_1     | Gradient color stop 1 | <img src="https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/colors/1.png" alt="color1" width="10"/> 5D63FF |
+| COLOR_2     | Gradient color stop 2 | <img src="https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/colors/2.png" alt="color1" width="10"/> F7A4F4 |
+| LABEL_COLOR | Message label color   | <img src="https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/colors/3.png" alt="color1" width="10"/> 5CE7F9 |
 
 ## Usage
 
@@ -160,6 +160,6 @@ starlit --help
 ## About this project
 I built this fun little project as a way to learn more about APIs and creating colorful terminal apps. It grew into a CLI project I'm proud of!
 
-Thank you to [charm](https://github.com/charmbracelet) for the color palette inspo 🎨 and to [wego](https://github.com/schachmat/wego/tree/master) for the ASCII icons
+Thank you to [charm](https://github.com/charmbracelet) for the color palette and design interface inspo 🎨 and to [wego](https://github.com/schachmat/wego/tree/master) for the ASCII icons
 
 ⭐ If you like this project, please consider giving it a star!
