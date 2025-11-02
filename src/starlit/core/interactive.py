@@ -34,7 +34,7 @@ def interactive_mode():
         while True:
             # interactive mode: runs a loop
             console.print(f'\n[bold {Colors.title}]Enter city name: [/bold {Colors.title}]')
-            city_name: str = input(f'{Misc.user_input}')
+            city_name: str = input(f'{Misc.user_input}').lower()
 
             if city_name in ('q', 'quit', '--quit'):
                 raise KeyboardInterrupt
