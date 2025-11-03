@@ -61,10 +61,13 @@ def setup_app(conf_dir, config_file):
 
             response = input("\nWould you like to edit the config now? (y/n): ").strip().lower()
 
+            while (response not in ["y", "yes", "n", "no"]):
+                    response = input("\nWould you like to edit the config now? (y/n): ").strip().lower()
             if response in ["y", "yes"]:
                 open_editor(config_file)
-            else:
+            elif response in ["no", "n"]:
                 console.print("\nYou can edit the config later with [yellow]`starlit --edit`[/yellow]")
+                
 
         else:
             label("ERROR", ".env.example not found in package", Colors.red, True)

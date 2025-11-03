@@ -15,6 +15,7 @@ from starlit.config.show_help import show_help
 
 from starlit.ui.styles import label, console, Colors
 from starlit.core.interactive import interactive_mode
+from starlit.core.weather_function import weather_function
 
 __version__ = version("starlit-cli")
 
@@ -112,14 +113,12 @@ def main():
 
     # handle city argument
     if args.city:
-        from starlit.core.weather_function import weather_function
         city_name = " ".join(args.city)
         weather_function(city_name)
         return
 
     # use default city if no args provided
     if default_city:
-        from starlit.core.weather_function import weather_function
         weather_function(default_city)
         return
 
