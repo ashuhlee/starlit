@@ -12,9 +12,6 @@ def onboarding_prompt():
 
     table = Table(show_header=False, show_edge=False, box=None, padding=(0, 2))
 
-    table.add_column(justify="left", vertical="top")
-    table.add_column(justify="left", vertical="top")
-
     left_text = Text()
     right_text = Text()
 
