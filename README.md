@@ -8,10 +8,10 @@ A minimal and customizable weather CLI, written in Python 🐍
 Powered by the OpenWeatherMap API and styled with the Python rich library + terminal text effects ✨
 
 
-![GitHub Repo stars](https://img.shields.io/github/stars/ashuhlee/starlit?style=for-the-badge&logo=starship&logoColor=%23D7E0ED&labelColor=%232F2D42&color=%23FFBDF2)
-![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ashuhlee/starlit?style=for-the-badge&logo=gitbook&logoColor=%23D9E0EE&labelColor=%232F2D42&color=FFD0CF)
-![GitHub commit activity](https://img.shields.io/github/v/release/ashuhlee/starlit?style=for-the-badge&logo=github&logoColor=%23D9E0EE&labelColor=%232F2D42&color=BBC0FF&label=version)
-![GitHub repo size](https://img.shields.io/github/repo-size/ashuhlee/starlit?style=for-the-badge&logo=removedotbg&logoColor=%23D9E0EE&labelColor=%232F2D42&color=AEE5FF)
+[![GitHub Repo stars](https://img.shields.io/github/stars/ashuhlee/starlit?style=for-the-badge&logo=starship&logoColor=%23D7E0ED&labelColor=%232F2D42&color=%23FFBDF2)](https://github.com/ashuhlee/starlit/stargazers)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ashuhlee/starlit?style=for-the-badge&logo=gitbook&logoColor=%23D9E0EE&labelColor=%232F2D42&color=FFD0CF)](https://github.com/ashuhlee/starlit/issues)
+[![GitHub Release](https://img.shields.io/github/v/release/ashuhlee/starlit?style=for-the-badge&logo=github&logoColor=%23D9E0EE&labelColor=%232F2D42&color=BBC0FF&label=version)](https://github.com/ashuhlee/starlit/releases)
+[![GitHub repo size](https://img.shields.io/github/repo-size/ashuhlee/starlit?style=for-the-badge&logo=removedotbg&logoColor=%23D9E0EE&labelColor=%232F2D42&color=AEE5FF)](https://github.com/ashuhlee/starlit)
 
 
 </div>
@@ -36,6 +36,11 @@ Then set up your configuration:
 ```zsh
 starlit --setup # creates ~/.config/starlit/.env
 starlit --edit  # opens .env file (add your api key here) 
+```
+
+To upgrade to the latest version:
+```zsh
+pipx upgrade starlit-cli
 ```
 
 ### Option 2: Install from source
@@ -67,11 +72,17 @@ pip install -e .
 ```
 4. **Set up your configuration**
 
-Generate a configuration file from the example template and open the file:
+Generates a configuration file from the example template and open the file:
 
 ```zsh
 starlit --setup
 starlit --edit
+```
+
+To update your installation:
+```zsh
+git pull origin main
+pip install -e .
 ```
 
 Get your [OpenWeatherMap API key](https://openweathermap.org/api) and paste it into the `.env` file under `API_KEY=`
@@ -143,10 +154,10 @@ starlit --help
 
 
 ## What's next
-- 🕐 **Different Modes:** Add live updates or full forecast modes
-- ✨ **Interactive Mode+:** Add a full command line interface when using `starlit -i`
-- 🎨 **Color Themes:** Support for `.json` theme files so you can easily switch between color palettes
-- 🌍 **Multi-language Support:** Option to view weather info in different languages
+- **Different Modes:** Add live updates or full forecast modes
+- **Interactive Mode+:** Add a full command line interface when using `starlit -i`
+- **Color Themes:** Support for `.json` theme files so you can easily switch between color palettes
+- **Multi-language Support:** Option to view weather info in different languages
 
 ## Tech stack
 
