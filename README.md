@@ -25,11 +25,11 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 ## Installation
 Installing starlit is quick and easy. The built-in setup command guides you through configuration.
 
-### Option 1: Install from PyPI
+### Option 1: Install with pipx
 
-The easiest way to install starlit is via pip:
+The easiest way to install starlit is via pipx:
 ```zsh
-pip install starlit-cli
+pipx install starlit-cli
 ```
 
 Then set up your configuration:
@@ -40,7 +40,7 @@ starlit --edit  # opens .env file (add your api key here)
 
 ### Option 2: Install from source
 
-For local development, contributing, or if you want an isolated installation:
+For local development or contributing:
 
 1. **Clone this repository**
 ```zsh
@@ -59,13 +59,13 @@ source .venv/bin/activate # macOS / Linux
 .venv\Scripts\Activate    # Windows (Powershell)
 ```
 
-3. **Install dependencies**
+3. **Install in editable mode**
 
 Some packages are required for this project. They will automatically be installed if you run:
 ```zsh
-pip install .
+pip install -e .
 ```
-4. **Set up your `.env` file**
+4. **Set up your configuration**
 
 Generate a configuration file from the example template and open the file:
 
