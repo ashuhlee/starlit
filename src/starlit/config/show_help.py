@@ -10,7 +10,7 @@ def show_help():
                   "\nWeather forecasts, beautifully styled for your terminal!")
 
     # usage section
-    usage = f"[yellow]starlit[/yellow] [dim]\\[city] [--flags][/dim]{' ':11}"
+    usage = f"[yellow]starlit[/yellow] [not b dim]\\[city] [--flags][/not b dim]{' ':11}"
 
     console.print(f"\n[bold {Colors.title}]USAGE[/bold {Colors.title}]\n")
     console.print(Padding(usage, (1,2), style="on #2a2a34", expand=False))

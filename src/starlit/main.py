@@ -3,9 +3,12 @@ import os
 import argparse
 import sys
 from pathlib import Path
+from typing import override
+
 from dotenv import load_dotenv
 from importlib.metadata import version
 
+from starlit.config.onboarding import onboarding_prompt
 from starlit.config.settings import show_config
 from starlit.config.setup import get_config_dir, get_env_file, open_editor, setup_app
 from starlit.config.show_help import show_help
@@ -21,9 +24,10 @@ env_path: Path = get_env_file() # ~/.config/starlit/.env
 
 
 class CustomArgParser(argparse.ArgumentParser):
-    def error(self, message):
+    @override
+    def error(self, message: str):
 
-        flg = Colors.light_pink
+        flg: str = Colors.light_pink
 
         if "unrecognized arguments:" in message:
             flag = message.split("unrecognized arguments:")[1].strip()
@@ -89,9 +93,7 @@ def main():
         return
 
     if not env_path.exists():
-        label("ERROR",
-              "No config found. Run [yellow]`starlit --setup`[/yellow] to get started",
-              Colors.red, True)
+        onboarding_prompt()
         return
 
     # run interactive mode
