@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "starlit-cli"
-version = "0.2.2"
+version = "0.2.3"
 description = "A minimal, cute and customizable weather cli"
 authors = ["ashuhlee"]
 readme = "README.md"
@@ -15,7 +15,8 @@ python-dotenv = "*"
 requests = "*"
 rich = "*"
 terminaltexteffects = "*"
-rich-gradient = "*"
+rich-gradient = "0.3.6"
+rich-color-ext = "0.1.4"
 
 [tool.poetry.scripts]
 starlit = "starlit.main:main"
