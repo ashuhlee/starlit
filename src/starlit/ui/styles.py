@@ -46,34 +46,17 @@ def gradient_text(text: str):
     color1 = make_valid_hex(color1_rich, DEFAULT_1_RICH)
     color2 = make_valid_hex(color2_rich, DEFAULT_2_RICH)
 
+    print()
     # applying color 2 three times bc you can barely see it
     console.print(Gradient(text.rstrip('\n'), colors=[color1] + ([color2] * 3)))
-    print('\033[?25h', end='') # show cursor
+    print('\033[?25h', end='\n') # show cursor
 
 # ascii codes
 class Style:
-    # reset
     end = '\033[0m'
-
-    # text styles
     bold = '\033[1m'
-    dim = '\033[2m'
-    italic = '\033[3m'
-    underline = '\033[4m'
-    blink = '\033[5m'
-    reverse = '\033[7m'
-    hidden = '\033[8m'
-    strike = '\033[9m'
-
-    # foreground text colors
-    black = '\033[30m'
-    red = '\033[31m'
-    green = '\033[32m'
     yellow = '\033[33m'
-    blue = '\033[34m'
     magenta = '\033[35m'
-    cyan = '\033[36m'
-    white = '\033[37m'
 
 class Misc:
     divider = f'{Style.yellow}›{Style.end} '
