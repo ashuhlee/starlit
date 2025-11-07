@@ -1,7 +1,5 @@
-import sys
-
 from rich.console import Console
-from rich_gradient import Gradient
+from rich_gradient import Text
 
 from starlit.ui.helpers import *
 
@@ -47,9 +45,8 @@ def gradient_text(text: str):
     color2 = make_valid_hex(color2_rich, DEFAULT_2_RICH)
 
     print()
-    # applying color 2 three times bc you can barely see it
-    console.print(Gradient(text.rstrip('\n'), colors=[color1] + ([color2] * 3)))
-    print('\033[?25h', end='\n') # show cursor
+    console.print(Text(text.rstrip('\n'), colors=[color1, color2]))
+    print('\033[?25h', end = '') # show cursor
 
 # ascii codes
 class Style:
