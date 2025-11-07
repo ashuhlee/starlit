@@ -4,9 +4,7 @@ import argparse
 import sys
 from pathlib import Path
 from typing import override
-
 from dotenv import load_dotenv
-from importlib.metadata import version
 
 from starlit.config.onboarding import onboarding_prompt
 from starlit.config.settings import show_config
@@ -17,11 +15,11 @@ from starlit.ui.styles import label, console, Colors
 from starlit.core.interactive import interactive_mode
 from starlit.core.weather_function import weather_function
 
-__version__ = version("starlit-cli")
+from starlit import __version__
+
 
 config_dir: Path = get_config_dir() # ~/.config/starlit
 env_path: Path = get_env_file() # ~/.config/starlit/.env
-
 
 
 class CustomArgParser(argparse.ArgumentParser):
