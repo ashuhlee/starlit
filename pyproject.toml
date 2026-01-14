@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "starlit-cli"
-version = "0.2.3"
+version = "0.2.4"
 description = "A minimal, cute and customizable weather cli"
 authors = ["ashuhlee"]
 readme = "README.md"
