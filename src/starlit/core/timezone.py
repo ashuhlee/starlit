@@ -28,10 +28,10 @@ def get_local_date(offset_seconds: int) -> str:
 
     local_time = utc_dt + timedelta(seconds=offset_seconds)
 
-    # format: Thu Oct 16
-    return local_time.strftime('%a. %b %-d')
+    # format: Thu. Oct 16
+    return local_time.strftime(f'%a. %b {local_time.day}')
 
-def get_sun_time(sunrise_arg: int, sunset_arg: int, offset_seconds: int):
+def get_sun_time(sunrise_arg: int, sunset_arg: int, offset_seconds: int) -> str:
 
     local_time, utc_dt = get_local_time(offset_seconds, return_dt = True)
 
