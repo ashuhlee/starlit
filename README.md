@@ -26,7 +26,7 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
   <img
     src="https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-7.png"
     alt="preview"
-    width="900"
+    width="700"
   >
 </p>
 
