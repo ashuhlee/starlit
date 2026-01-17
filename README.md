@@ -22,7 +22,10 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 - An [OpenWeatherMap](https://openweathermap.org) API key
 - UTF-8 terminal with 256 colors and nerd font
 
-![preview](https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-7.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-7.png" alt="preview">
+</p>
+
 
 ## Installation
 Installing starlit is quick and easy. The built-in setup command guides you through configuration.
