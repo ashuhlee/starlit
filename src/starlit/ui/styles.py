@@ -31,12 +31,12 @@ class Colors:
 
 
 # show label to left of text
-def label(tag: str, text: str, color: str, newline: bool):
+def label(tag: str, text: str, color: str, newline: bool, sys_exit: bool = True):
     tag = tag.upper()
 
     console.print(f'{'\n' if newline else ''}[bold {Colors.white} on {color}] {tag} [/bold {Colors.white} on {color}] {text}')
 
-    if tag == 'ERROR':
+    if tag == 'ERROR' and sys_exit:
         sys.exit(1)
 
 def gradient_text(text: str):
