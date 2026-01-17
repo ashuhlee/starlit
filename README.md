@@ -23,7 +23,11 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 - UTF-8 terminal with 256 colors and nerd font
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-7.png" alt="preview">
+  <img
+    src="https://raw.githubusercontent.com/ashuhlee/starlit/main/assets/images/previews/preview-7.png"
+    alt="preview"
+    width="900"
+  >
 </p>
 
 
