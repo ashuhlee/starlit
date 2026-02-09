@@ -9,9 +9,10 @@ Powered by the OpenWeatherMap API and styled with the Python rich library + term
 
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/ashuhlee/starlit?style=for-the-badge&logo=starship&logoColor=%23D7E0ED&labelColor=%232F2D42&color=%23FFBDF2)](https://github.com/ashuhlee/starlit/stargazers)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/starlit-cli?style=for-the-badge&logo=python&logoColor=%23D9E0EE&labelColor=%232F2D42&color=%23AEE5FF)](https://pypi.org/project/starlit-cli/)
+[![PyPi Release](https://img.shields.io/pypi/v/starlit-cli?style=for-the-badge&logo=GitHub&label=version&labelColor=%232F2D42&color=%23BBC0FF
+)](https://github.com/ashuhlee/starlit/releases)
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ashuhlee/starlit?style=for-the-badge&logo=gitbook&logoColor=%23D9E0EE&labelColor=%232F2D42&color=FFD0CF)](https://github.com/ashuhlee/starlit/issues)
-[![GitHub Release](https://img.shields.io/github/v/release/ashuhlee/starlit?style=for-the-badge&logo=github&logoColor=%23D9E0EE&labelColor=%232F2D42&color=BBC0FF&label=version)](https://github.com/ashuhlee/starlit/releases)
-[![GitHub repo size](https://img.shields.io/github/repo-size/ashuhlee/starlit?style=for-the-badge&logo=removedotbg&logoColor=%23D9E0EE&labelColor=%232F2D42&color=AEE5FF)](https://github.com/ashuhlee/starlit)
 
 
 </div>
